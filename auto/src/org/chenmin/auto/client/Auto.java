@@ -13,8 +13,9 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public class Auto implements EntryPoint {
 
+	static final DialogBox dialogBox = new DialogBox();
+	
 	public static void show() {
-		final DialogBox dialogBox = new DialogBox();
 		dialogBox.setText("Order:" + Window.getTitle());
 		dialogBox.setAnimationEnabled(true);
 		final Button closeButton = new Button("Close");
@@ -32,7 +33,17 @@ public class Auto implements EntryPoint {
 				dialogBox.hide();
 			}
 		});
+		dialogBox.center();
 		dialogBox.show();
+	}
+	
+	public static void showAuto(){
+		if(dialogBox.isShowing()){
+			dialogBox.hide();
+		}else{
+			dialogBox.center();
+			dialogBox.show();
+		}
 	}
 
 	/**
@@ -40,11 +51,12 @@ public class Auto implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		export();
+		show();
 	}
 
 	public native void export() /*-{
 		$wnd.showAuto = $entry(function() {
-			@org.chenmin.auto.client.Auto::show()();
+			@org.chenmin.auto.client.Auto::showAuto()();
 		});
 	}-*/;
 

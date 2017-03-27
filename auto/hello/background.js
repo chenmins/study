@@ -8,5 +8,5 @@
 chrome.browserAction.onClicked.addListener(function(tab) {  
      //chrome.tabs.executeScript(tab.id, {file: 'jquery.min.js'});  
      //chrome.tabs.executeScript(tab.id, {file: 'content.js'});  
-	 chrome.tabs.executeScript(tab.id,{code:"alert(window.title);window.showAuto();"});
+	 //chrome.tabs.executeScript(tab.id,{code:"alert(window.title);window.showAuto();"});
  });  

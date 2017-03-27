@@ -10,17 +10,25 @@ function click(e) {
    //   {code:"alert('" + e.target.id + "')"});
   //chrome.tabs.executeScript(null,
   //    {code:"alert(document.title);window.showAuto();"});
-  chrome.tabs.executeScript(null,
-      {file:"run.js"});
+ // chrome.tabs.executeScript(null,
+  //    {file:"run.js"});
+	if(e.target.id=='in'){
+		chrome.tabs.executeScript(null,
+			{file:"in.js"});
+	}
+	if(e.target.id=='run'){
+		chrome.tabs.executeScript(null,
+			{file:"run.js"});
+	}
   window.close();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  //var divs = document.querySelectorAll('div');
-  //for (var i = 0; i < divs.length; i++) {
-  //  divs[i].addEventListener('click', click);
-  //}
-  chrome.tabs.executeScript(null,
-      {file:"run.js"});
+  var divs = document.querySelectorAll('div');
+  for (var i = 0; i < divs.length; i++) {
+	divs[i].addEventListener('click', click);
+  }
+  //chrome.tabs.executeScript(null,
+     // {file:"run.js"});
 });
  
