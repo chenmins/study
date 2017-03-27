@@ -6,6 +6,7 @@
     head.appendChild(css);
     var script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
+	script.setAttribute('id', '_auto');
     script.setAttribute('src', '//cmworker.duapp.com/auto/auto/auto.nocache.js');
     head.appendChild(script);
 	var script1 = document.createElement('script');

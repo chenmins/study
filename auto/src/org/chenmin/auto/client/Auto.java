@@ -16,7 +16,7 @@ public class Auto implements EntryPoint {
 	static final DialogBox dialogBox = new DialogBox();
 	
 	public static void show() {
-		dialogBox.setText("Order:" + Window.getTitle());
+		dialogBox.setText("小助理:" + Window.getTitle());
 		dialogBox.setAnimationEnabled(true);
 		final Button closeButton = new Button("Close");
 		closeButton.getElement().setId("closeButton");

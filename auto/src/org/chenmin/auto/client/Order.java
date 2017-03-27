@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import static com.google.gwt.query.client.GQuery.$;
 
 public class Order extends Composite {
 	/**
@@ -67,6 +68,8 @@ public class Order extends Composite {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				String keys = key.getText();
+				put(event,keys);
 				key.setText("");
 				val.setText("");
 				showinfo(event, "clear ok!");
@@ -77,8 +80,8 @@ public class Order extends Composite {
 			@Override
 			public void onClick(ClickEvent event) {
 				String keys = key.getText();
-//				String vals = val.getText();
-				put(event,keys);
+				String vals = val.getText();
+				$(keys).val(vals);
 			}
 		});
 
@@ -87,7 +90,7 @@ public class Order extends Composite {
 			@Override
 			public void onClick(ClickEvent event) {
 				String keys = key.getText();
-				showinfo(event,keys+ "get ok!");
+				val.setText($(keys).val());
 			}
 		});
 	}
