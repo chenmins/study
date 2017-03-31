@@ -6,6 +6,7 @@ import org.chenmin.auto.client.GreetingService;
 import org.chenmin.auto.server.db.Test;
 import org.chenmin.auto.shared.FieldVerifier;
 import org.chenmin.auto.shared.FlightWG;
+import org.chenmin.auto.shared.PassengerWG;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -22,10 +23,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 			// the client.
 			throw new IllegalArgumentException("Name must be at least 4 characters long");
 		}
-
 //		String serverInfo = getServletContext().getServerInfo();
 		String userAgent = getThreadLocalRequest().getHeader("User-Agent");
-
 		// Escape data from the client to avoid cross-site script vulnerabilities.
 		input = escapeHtml(input);
 		userAgent = escapeHtml(userAgent);
@@ -33,10 +32,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		System.out.println("input:"+input);
 //		return "Hello, " + input + "!<br><br>I am running " + serverInfo + ".<br><br>It looks like you are using:<br>"
 //				+ userAgent;
-		//Test
 	//	return "Hello, " + input +"\n"+Test.getSysdate()+"\n"+serverInfo;
-		List<FlightWG> p = Test.getFlightWGs(input);
-		return p.toString();
+		List<FlightWG> f = Test.getFlightWGs(input);
+		List<PassengerWG> p =Test.getPassengerWGs(input); 
+		return f.toString()+","+ p.toString();
 	}
 
 	/**

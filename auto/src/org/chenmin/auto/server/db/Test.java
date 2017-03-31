@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.chenmin.auto.shared.FlightWG;
+import org.chenmin.auto.shared.PassengerWG;
 
 public class Test {
 	
@@ -26,7 +27,24 @@ public class Test {
 		System.out.println(p);
 	}
 
-
+	
+	public static List<PassengerWG> getPassengerWGs(String orderID)  {
+		Connection conn = DBUtils.getConnection(url, user, password);
+		QueryRunner run = new QueryRunner( );
+		// Use the BeanHandler implementation to convert the first
+//		ResultSetHandler<FlightWG> h = new BeanHandler<FlightWG>(FlightWG.class);
+		ResultSetHandler<List<PassengerWG>> h = new BeanListHandler<PassengerWG>(PassengerWG.class);
+		List<PassengerWG> p;
+		try {
+			p = run.query(conn,
+			    "SELECT * FROM passenger WHERE orderID=?", h, orderID);
+			DBUtils.closeResources(conn,null,null);
+			return p;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return null;
+	}
 
 	public static List<FlightWG> getFlightWGs(String orderID)  {
 		Connection conn = DBUtils.getConnection(url, user, password);
