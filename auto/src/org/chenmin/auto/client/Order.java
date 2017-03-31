@@ -26,6 +26,7 @@ public class Order extends Composite {
 	private Button clear = new Button("clear!");
 	private Button put = new Button("put!");
 	private Button get = new Button("get!");
+	private Button click = new Button("click!");
 	private Label label = new Label("wait!");
 	private Label info = new Label("wait!");
 	private TextBox key = new TextBox();
@@ -47,6 +48,8 @@ public class Order extends Composite {
 		hp.add(put);
 		hp.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;"));
 		hp.add(get);
+		hp.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;"));
+		hp.add(click);
 		this.panel.add(hp);
 		label.setText("Hello:");
 		this.panel.add(label);
@@ -91,6 +94,14 @@ public class Order extends Composite {
 			public void onClick(ClickEvent event) {
 				String keys = key.getText();
 				val.setText($(keys).val());
+			}
+		});
+		click.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				String keys = key.getText();
+				 $(keys).click();
 			}
 		});
 	}
