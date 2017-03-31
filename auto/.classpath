@@ -5,5 +5,7 @@
 	<classpathentry kind="con" path="com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER/gwt-2.7.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtquery-1.4.3.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-dbutils-1.6.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/mysql-connector-java-5.1.39.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

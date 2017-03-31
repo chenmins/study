@@ -1,5 +1,7 @@
 package org.chenmin.auto.client;
 
+import static com.google.gwt.query.client.GQuery.$;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -14,7 +16,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import static com.google.gwt.query.client.GQuery.$;
 
 public class Order extends Composite {
 	/**
@@ -23,7 +24,7 @@ public class Order extends Composite {
 	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 	
 	private VerticalPanel panel = new VerticalPanel();
-	private Button clear = new Button("clear!");
+	private Button clear = new Button("获得订单");
 	private Button put = new Button("put!");
 	private Button get = new Button("get!");
 	private Button click = new Button("click!");
@@ -73,9 +74,9 @@ public class Order extends Composite {
 			public void onClick(ClickEvent event) {
 				String keys = key.getText();
 				put(event,keys);
-				key.setText("");
-				val.setText("");
-				showinfo(event, "clear ok!");
+//				key.setText("");
+//				val.setText("");
+//				showinfo(event, "clear ok!");
 			}
 		});
 		put.addClickHandler(new ClickHandler() {
@@ -120,10 +121,10 @@ public class Order extends Composite {
 		});
 	}
 
-	private void showinfo(ClickEvent event, String text) {
+	public void showinfo(ClickEvent event, String text) {
 		Widget source = (Widget) event.getSource();
-		int left = source.getAbsoluteLeft() + 10;
-		int top = source.getAbsoluteTop() + 10;
+		int left = source.getAbsoluteLeft() + 50;
+		int top = source.getAbsoluteTop() + 50;
 		simplePopup.setPopupPosition(left, top);
 		info.setText(text);
 		simplePopup.show();
