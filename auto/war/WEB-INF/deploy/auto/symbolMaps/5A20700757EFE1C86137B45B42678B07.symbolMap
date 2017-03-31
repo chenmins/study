@@ -818,11 +818,11 @@ Kn,com.google.gwt.lang.ClassLiteralHolder::Ljava_util_NoSuchElementException_2_c
 Ln,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Auto$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Auto$1_2_classLit,org/chenmin/auto/client/Auto.java,31,-1
 Mn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_GreetingService_1Proxy_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_GreetingService_1Proxy_2_classLit,gen/org/chenmin/auto/client/GreetingService_Proxy.java,14,-1
 Nn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_GreetingService_1TypeSerializer_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_GreetingService_1TypeSerializer_2_classLit,gen/org/chenmin/auto/client/GreetingService_TypeSerializer.java,10,-1
-On,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$1_2_classLit,org/chenmin/auto/client/Order.java,70,-1
-Pn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$2_2_classLit,org/chenmin/auto/client/Order.java,81,-1
-Qn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$3_2_classLit,org/chenmin/auto/client/Order.java,91,-1
-Rn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$4_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$4_2_classLit,org/chenmin/auto/client/Order.java,99,-1
-Sn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order_2_classLit,org/chenmin/auto/client/Order.java,19,-1
+On,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$1_2_classLit,org/chenmin/auto/client/Order.java,71,-1
+Pn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$2_2_classLit,org/chenmin/auto/client/Order.java,82,-1
+Qn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$3_2_classLit,org/chenmin/auto/client/Order.java,92,-1
+Rn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order$4_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order$4_2_classLit,org/chenmin/auto/client/Order.java,100,-1
+Sn,com.google.gwt.lang.ClassLiteralHolder::Lorg_chenmin_auto_client_Order_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lorg_chenmin_auto_client_Order_2_classLit,org/chenmin/auto/client/Order.java,20,-1
 CollapsedPropertyHolder,,com.google.gwt.lang.CollapsedPropertyHolder,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/CollapsedPropertyHolder.java,22,-1
 Tn,com.google.gwt.lang.CollapsedPropertyHolder::permutationId,com.google.gwt.lang.CollapsedPropertyHolder,permutationId,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/CollapsedPropertyHolder.java,27,-1
 Un,com.google.gwt.lang.Exceptions::cacheJavaScriptException(Ljava/lang/Object;Lcom/google/gwt/core/client/JavaScriptException;)V,com.google.gwt.lang.Exceptions,cacheJavaScriptException,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Exceptions.java,57,0
@@ -2276,34 +2276,34 @@ GreetingService_TypeSerializer,,org.chenmin.auto.client.GreetingService_TypeSeri
 UF,org.chenmin.auto.client.GreetingService_TypeSerializer::$clinit()V,org.chenmin.auto.client.GreetingService_TypeSerializer,$clinit,gen/org/chenmin/auto/client/GreetingService_TypeSerializer.java,10,0
 VF,org.chenmin.auto.client.GreetingService_TypeSerializer::GreetingService_TypeSerializer() <init>,org.chenmin.auto.client.GreetingService_TypeSerializer,GreetingService_TypeSerializer,gen/org/chenmin/auto/client/GreetingService_TypeSerializer.java,72,0
 TF,org.chenmin.auto.client.GreetingService_TypeSerializer::methodMapNative,org.chenmin.auto.client.GreetingService_TypeSerializer,methodMapNative,gen/org/chenmin/auto/client/GreetingService_TypeSerializer.java,11,-1
-Order,,org.chenmin.auto.client.Order,,org/chenmin/auto/client/Order.java,19,-1
-WF,org.chenmin.auto.client.Order::$put(Lorg/chenmin/auto/client/Order;Lcom/google/gwt/event/dom/client/ClickEvent;Ljava/lang/String;)V,org.chenmin.auto.client.Order,$put,org/chenmin/auto/client/Order.java,109,0
-XF,org.chenmin.auto.client.Order::$showinfo(Lorg/chenmin/auto/client/Order;Lcom/google/gwt/event/dom/client/ClickEvent;Ljava/lang/String;)V,org.chenmin.auto.client.Order,$showinfo,org/chenmin/auto/client/Order.java,123,0
-YF,org.chenmin.auto.client.Order::Order() <init>,org.chenmin.auto.client.Order,Order,org/chenmin/auto/client/Order.java,36,0
-a,org.chenmin.auto.client.Order::clear,org.chenmin.auto.client.Order,clear,org/chenmin/auto/client/Order.java,26,-1
-b,org.chenmin.auto.client.Order::click,org.chenmin.auto.client.Order,click,org/chenmin/auto/client/Order.java,29,-1
-c,org.chenmin.auto.client.Order::get,org.chenmin.auto.client.Order,get,org/chenmin/auto/client/Order.java,28,-1
-d,org.chenmin.auto.client.Order::greetingService,org.chenmin.auto.client.Order,greetingService,org/chenmin/auto/client/Order.java,23,-1
-e,org.chenmin.auto.client.Order::info,org.chenmin.auto.client.Order,info,org/chenmin/auto/client/Order.java,31,-1
-f,org.chenmin.auto.client.Order::key,org.chenmin.auto.client.Order,key,org/chenmin/auto/client/Order.java,32,-1
-g,org.chenmin.auto.client.Order::label,org.chenmin.auto.client.Order,label,org/chenmin/auto/client/Order.java,30,-1
-i,org.chenmin.auto.client.Order::panel,org.chenmin.auto.client.Order,panel,org/chenmin/auto/client/Order.java,25,-1
-j,org.chenmin.auto.client.Order::put,org.chenmin.auto.client.Order,put,org/chenmin/auto/client/Order.java,27,-1
-k,org.chenmin.auto.client.Order::simplePopup,org.chenmin.auto.client.Order,simplePopup,org/chenmin/auto/client/Order.java,34,-1
-n,org.chenmin.auto.client.Order::val,org.chenmin.auto.client.Order,val,org/chenmin/auto/client/Order.java,33,-1
-Order$1,,org.chenmin.auto.client.Order$1,,org/chenmin/auto/client/Order.java,70,-1
-ZF,org.chenmin.auto.client.Order$1::Order$1(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$1,Order$1,org/chenmin/auto/client/Order.java,70,0
-$F,org.chenmin.auto.client.Order$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$1,onClick,org/chenmin/auto/client/Order.java,73,0
-a,org.chenmin.auto.client.Order$1::this$01,org.chenmin.auto.client.Order$1,this$01,org/chenmin/auto/client/Order.java,70,-1
-Order$2,,org.chenmin.auto.client.Order$2,,org/chenmin/auto/client/Order.java,81,-1
-_F,org.chenmin.auto.client.Order$2::Order$2(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$2,Order$2,org/chenmin/auto/client/Order.java,81,0
-aG,org.chenmin.auto.client.Order$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$2,onClick,org/chenmin/auto/client/Order.java,84,0
-a,org.chenmin.auto.client.Order$2::this$01,org.chenmin.auto.client.Order$2,this$01,org/chenmin/auto/client/Order.java,81,-1
-Order$3,,org.chenmin.auto.client.Order$3,,org/chenmin/auto/client/Order.java,91,-1
-bG,org.chenmin.auto.client.Order$3::Order$3(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$3,Order$3,org/chenmin/auto/client/Order.java,91,0
-cG,org.chenmin.auto.client.Order$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$3,onClick,org/chenmin/auto/client/Order.java,94,0
-a,org.chenmin.auto.client.Order$3::this$01,org.chenmin.auto.client.Order$3,this$01,org/chenmin/auto/client/Order.java,91,-1
-Order$4,,org.chenmin.auto.client.Order$4,,org/chenmin/auto/client/Order.java,99,-1
-dG,org.chenmin.auto.client.Order$4::Order$4(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$4,Order$4,org/chenmin/auto/client/Order.java,99,0
-eG,org.chenmin.auto.client.Order$4::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$4,onClick,org/chenmin/auto/client/Order.java,102,0
-a,org.chenmin.auto.client.Order$4::this$01,org.chenmin.auto.client.Order$4,this$01,org/chenmin/auto/client/Order.java,99,-1
+Order,,org.chenmin.auto.client.Order,,org/chenmin/auto/client/Order.java,20,-1
+WF,org.chenmin.auto.client.Order::$put(Lorg/chenmin/auto/client/Order;Lcom/google/gwt/event/dom/client/ClickEvent;Ljava/lang/String;)V,org.chenmin.auto.client.Order,$put,org/chenmin/auto/client/Order.java,110,0
+XF,org.chenmin.auto.client.Order::$showinfo(Lorg/chenmin/auto/client/Order;Lcom/google/gwt/event/dom/client/ClickEvent;Ljava/lang/String;)V,org.chenmin.auto.client.Order,$showinfo,org/chenmin/auto/client/Order.java,124,0
+YF,org.chenmin.auto.client.Order::Order() <init>,org.chenmin.auto.client.Order,Order,org/chenmin/auto/client/Order.java,37,0
+a,org.chenmin.auto.client.Order::clear,org.chenmin.auto.client.Order,clear,org/chenmin/auto/client/Order.java,27,-1
+b,org.chenmin.auto.client.Order::click,org.chenmin.auto.client.Order,click,org/chenmin/auto/client/Order.java,30,-1
+c,org.chenmin.auto.client.Order::get,org.chenmin.auto.client.Order,get,org/chenmin/auto/client/Order.java,29,-1
+d,org.chenmin.auto.client.Order::greetingService,org.chenmin.auto.client.Order,greetingService,org/chenmin/auto/client/Order.java,24,-1
+e,org.chenmin.auto.client.Order::info,org.chenmin.auto.client.Order,info,org/chenmin/auto/client/Order.java,32,-1
+f,org.chenmin.auto.client.Order::key,org.chenmin.auto.client.Order,key,org/chenmin/auto/client/Order.java,33,-1
+g,org.chenmin.auto.client.Order::label,org.chenmin.auto.client.Order,label,org/chenmin/auto/client/Order.java,31,-1
+i,org.chenmin.auto.client.Order::panel,org.chenmin.auto.client.Order,panel,org/chenmin/auto/client/Order.java,26,-1
+j,org.chenmin.auto.client.Order::put,org.chenmin.auto.client.Order,put,org/chenmin/auto/client/Order.java,28,-1
+k,org.chenmin.auto.client.Order::simplePopup,org.chenmin.auto.client.Order,simplePopup,org/chenmin/auto/client/Order.java,35,-1
+n,org.chenmin.auto.client.Order::val,org.chenmin.auto.client.Order,val,org/chenmin/auto/client/Order.java,34,-1
+Order$1,,org.chenmin.auto.client.Order$1,,org/chenmin/auto/client/Order.java,71,-1
+ZF,org.chenmin.auto.client.Order$1::Order$1(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$1,Order$1,org/chenmin/auto/client/Order.java,71,0
+$F,org.chenmin.auto.client.Order$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$1,onClick,org/chenmin/auto/client/Order.java,74,0
+a,org.chenmin.auto.client.Order$1::this$01,org.chenmin.auto.client.Order$1,this$01,org/chenmin/auto/client/Order.java,71,-1
+Order$2,,org.chenmin.auto.client.Order$2,,org/chenmin/auto/client/Order.java,82,-1
+_F,org.chenmin.auto.client.Order$2::Order$2(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$2,Order$2,org/chenmin/auto/client/Order.java,82,0
+aG,org.chenmin.auto.client.Order$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$2,onClick,org/chenmin/auto/client/Order.java,85,0
+a,org.chenmin.auto.client.Order$2::this$01,org.chenmin.auto.client.Order$2,this$01,org/chenmin/auto/client/Order.java,82,-1
+Order$3,,org.chenmin.auto.client.Order$3,,org/chenmin/auto/client/Order.java,92,-1
+bG,org.chenmin.auto.client.Order$3::Order$3(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$3,Order$3,org/chenmin/auto/client/Order.java,92,0
+cG,org.chenmin.auto.client.Order$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$3,onClick,org/chenmin/auto/client/Order.java,95,0
+a,org.chenmin.auto.client.Order$3::this$01,org.chenmin.auto.client.Order$3,this$01,org/chenmin/auto/client/Order.java,92,-1
+Order$4,,org.chenmin.auto.client.Order$4,,org/chenmin/auto/client/Order.java,100,-1
+dG,org.chenmin.auto.client.Order$4::Order$4(Lorg/chenmin/auto/client/Order;) <init>,org.chenmin.auto.client.Order$4,Order$4,org/chenmin/auto/client/Order.java,100,0
+eG,org.chenmin.auto.client.Order$4::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,org.chenmin.auto.client.Order$4,onClick,org/chenmin/auto/client/Order.java,103,0
+a,org.chenmin.auto.client.Order$4::this$01,org.chenmin.auto.client.Order$4,this$01,org/chenmin/auto/client/Order.java,100,-1

@@ -76,7 +76,7 @@ public class Order extends Composite {
 				put(event,keys);
 //				key.setText("");
 //				val.setText("");
-//				showinfo(event, "clear ok!");
+				showinfo(event, keys+"get ok!");
 			}
 		});
 		put.addClickHandler(new ClickHandler() {
