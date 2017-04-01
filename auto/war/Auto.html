@@ -23,6 +23,10 @@
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
+    
+
+    <script type="text/javascript" language="javascript" src="jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="json2.js"></script>
     <script type="text/javascript" language="javascript" src="auto/auto.nocache.js"></script>
   </head>
 
@@ -35,5 +39,30 @@
  <script type="text/javascript">
  showAuto();
  </script>
+ 
+ 
+<script>
+$(function() {
+  $('#submit').click(function() {
+    var d = {};
+    var t = $('form').serializeArray();
+    $.each(t, function() {
+      d[this.name] = this.value;
+    });
+    alert(JSON.stringify(d));
+  });
+});
+</script>
+<form>
+<input id="a1" type="input" value="" name="a1"><br>
+<input id="a2" type="input" value="" name="a2"><br>
+<input id="a3" type="input" value="" name="a3"><br>
+<input id="a4" type="input" value="" name="a4"><br>
+<select id="ax" name="ax">
+<option value="0">选项1</option>
+<option value="1">选项2</option>
+</select><br>
+<input id="submit" type="button" value="提交" name="submit">
+</form>
   </body>
 </html>

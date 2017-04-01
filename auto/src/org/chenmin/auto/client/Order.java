@@ -86,6 +86,7 @@ public class Order extends Composite {
 				String keys = key.getText();
 				String vals = val.getText();
 				$(keys).val(vals);
+				
 			}
 		});
 
