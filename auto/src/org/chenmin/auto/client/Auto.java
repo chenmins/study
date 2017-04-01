@@ -16,7 +16,7 @@ public class Auto implements EntryPoint {
 	static final DialogBox dialogBox = new DialogBox();
 	
 	public static void show() {
-		dialogBox.setText("小助理:" + Window.getTitle());
+		dialogBox.setText("小助手:" + Window.getTitle());
 		dialogBox.setAnimationEnabled(true);
 		final Button closeButton = new Button("Close");
 		closeButton.getElement().setId("closeButton");
@@ -50,14 +50,10 @@ public class Auto implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		export();
+		JS.export();
 		show();
 	}
 
-	public native void export() /*-{
-		$wnd.showAuto = $entry(function() {
-			@org.chenmin.auto.client.Auto::showAuto()();
-		});
-	}-*/;
-
+	
+	
 }

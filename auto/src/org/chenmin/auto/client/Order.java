@@ -103,7 +103,9 @@ public class Order extends Composite {
 			@Override
 			public void onClick(ClickEvent event) {
 				String keys = key.getText();
-				 $(keys).click();
+//				 $(keys).click();
+//				 formData("#aa1")
+				 Window.alert(JS.formData(keys));
 			}
 		});
 	}

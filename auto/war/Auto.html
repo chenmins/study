@@ -37,7 +37,7 @@
   <!--                                           -->
   <body>
  <script type="text/javascript">
- showAuto();
+ //showAuto();
  </script>
  
  
@@ -45,7 +45,7 @@
 $(function() {
   $('#submit').click(function() {
     var d = {};
-    var t = $('form').serializeArray();
+    var t = $('#aa1').serializeArray();
     $.each(t, function() {
       d[this.name] = this.value;
     });
@@ -53,11 +53,11 @@ $(function() {
   });
 });
 </script>
-<form>
-<input id="a1" type="input" value="" name="a1"><br>
-<input id="a2" type="input" value="" name="a2"><br>
-<input id="a3" type="input" value="" name="a3"><br>
-<input id="a4" type="input" value="" name="a4"><br>
+<form id="aa1">123aa
+<input id="a1" type="input" value="11" name="a1"><br>
+<input id="a2" type="input" value="22" name="a2"><br>
+<input id="a3" type="input" value="33" name="a3"><br>
+<input id="a4" type="input" value="44" name="a4"><br>
 <select id="ax" name="ax">
 <option value="0">选项1</option>
 <option value="1">选项2</option>
