@@ -7,4 +7,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface GreetingServiceAsync {
 	void greetServer(String input, AsyncCallback<String> callback) throws IllegalArgumentException;
+
+	void isValid(String orderID, String formdata, AsyncCallback<Boolean> callback);
 }

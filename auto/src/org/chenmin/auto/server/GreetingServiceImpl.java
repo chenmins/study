@@ -51,4 +51,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		}
 		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 	}
+
+	@Override
+	public boolean isValid(String orderID, String formdata) throws IllegalArgumentException {
+		if(orderID.isEmpty())
+			throw new IllegalArgumentException("orderID 不为空");
+		System.out.println("orderID:"+orderID);
+		System.out.println("formdata:"+formdata);
+
+		return false;
+	}
 }
