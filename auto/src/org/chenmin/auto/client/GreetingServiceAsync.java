@@ -1,5 +1,7 @@
 package org.chenmin.auto.client;
 
+import org.chenmin.auto.shared.OrderWG;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -12,4 +14,6 @@ public interface GreetingServiceAsync {
 	void isValid(String url,String orderID, String formdata, AsyncCallback<Boolean> callback) throws IllegalArgumentException;
 
 	void getFormSel(String url, AsyncCallback<String> callback) throws IllegalArgumentException;
+
+	void getOrder(String orderID, AsyncCallback<OrderWG> callback)  ;
 }

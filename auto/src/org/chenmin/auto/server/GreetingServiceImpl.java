@@ -8,6 +8,7 @@ import org.chenmin.auto.server.air.TigerAir;
 import org.chenmin.auto.server.db.Test;
 import org.chenmin.auto.shared.FieldVerifier;
 import org.chenmin.auto.shared.FlightWG;
+import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -82,5 +83,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public OrderWG getOrder(String orderID) throws Exception {
+		if(orderID.isEmpty())
+			throw new IllegalArgumentException("orderID 不为空");
+		List<FlightWG> f = Test.getFlightWGs(orderID);
+		List<PassengerWG> p =Test.getPassengerWGs(orderID); 
+		OrderWG order = new OrderWG();
+		order.setFlight(f);
+		order.setPassenger(p);
+		return order;
 	}
 }

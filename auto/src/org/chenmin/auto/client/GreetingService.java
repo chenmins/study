@@ -1,5 +1,7 @@
 package org.chenmin.auto.client;
 
+import org.chenmin.auto.shared.OrderWG;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -13,4 +15,6 @@ public interface GreetingService extends RemoteService {
 	boolean isValid(String url,String orderID,String formdata) throws Exception;
 	
 	String getFormSel(String url) throws IllegalArgumentException;
+	
+	OrderWG getOrder(String orderID) throws Exception;
 }
