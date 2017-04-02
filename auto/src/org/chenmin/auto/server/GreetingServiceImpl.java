@@ -1,8 +1,10 @@
 package org.chenmin.auto.server;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.chenmin.auto.client.GreetingService;
+import org.chenmin.auto.server.air.TigerAir;
 import org.chenmin.auto.server.db.Test;
 import org.chenmin.auto.shared.FieldVerifier;
 import org.chenmin.auto.shared.FlightWG;
@@ -51,14 +53,34 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		}
 		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 	}
+	
+	static List<AirValid> airs = new ArrayList<AirValid>();
+	
+	static{
+		airs.add(new TigerAir());
+	}
 
 	@Override
-	public boolean isValid(String orderID, String formdata) throws IllegalArgumentException {
+	public boolean isValid(String url,String orderID, String formdata) throws Exception {
 		if(orderID.isEmpty())
 			throw new IllegalArgumentException("orderID 不为空");
 		System.out.println("orderID:"+orderID);
 		System.out.println("formdata:"+formdata);
-
+		for(AirValid air:airs){
+			if(air.isMe(url)){
+				return air.isValid(url, orderID, formdata);
+			}
+		}
 		return false;
+	}
+
+	@Override
+	public String getFormSel(String url) throws IllegalArgumentException {
+		for(AirValid air:airs){
+			if(air.isMe(url)){
+				return air.getFormSel(url);
+			}
+		}
+		return null;
 	}
 }

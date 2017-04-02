@@ -10,5 +10,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface GreetingService extends RemoteService {
 	String greetServer(String name) throws IllegalArgumentException;
 	
-	boolean isValid(String orderID,String formdata) throws IllegalArgumentException;
+	boolean isValid(String url,String orderID,String formdata) throws Exception;
+	
+	String getFormSel(String url) throws IllegalArgumentException;
 }

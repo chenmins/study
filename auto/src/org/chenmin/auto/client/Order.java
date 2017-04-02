@@ -108,6 +108,7 @@ public class Order extends Composite {
 				click(vals, JS.formData(keys));
 			}
 		});
+		getFormsel();
 	}
 
 	public void put(final ClickEvent event, String textToServer) {
@@ -124,6 +125,24 @@ public class Order extends Composite {
 		});
 	}
 
+	public void getFormsel(){
+		AsyncCallback<String> callback = new AsyncCallback<String>() {
+			
+			@Override
+			public void onSuccess(String result) {
+				key.setText(result);
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+		};
+		GWT.log("Window.Location.getHostName():"+Window.Location.getHostName());
+		GWT.log("Window.Location.getHref():"+Window.Location.getHref());
+		greetingService.getFormSel(Window.Location.getHref(), callback);
+	}
+	
 	public void click(final String orderID, final String formdata) {
 		AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
 
@@ -141,7 +160,7 @@ public class Order extends Composite {
 				Window.alert(caught.getMessage());
 			}
 		};
-		greetingService.isValid(orderID, formdata, callback);
+		greetingService.isValid(Window.Location.getPath(),orderID, formdata, callback);
 	}
 
 	public void showinfo(ClickEvent event, String text) {

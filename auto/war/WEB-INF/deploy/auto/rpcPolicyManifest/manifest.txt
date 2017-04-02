@@ -1,3 +1,3 @@
 # Module auto
 # RPC service class, partial path of RPC policy file
-org.chenmin.auto.client.GreetingService, 70C79B8C0D234413D87C8A03AB1DA145.gwt.rpc
+org.chenmin.auto.client.GreetingService, 5BA088CC134A41E5F902B53A07656E6B.gwt.rpc
