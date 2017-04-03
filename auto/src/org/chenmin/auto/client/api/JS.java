@@ -1,4 +1,4 @@
-package org.chenmin.auto.client;
+package org.chenmin.auto.client.api;
 
 public class JS {
 	

@@ -1,9 +1,12 @@
-package org.chenmin.auto.client;
+package org.chenmin.auto.client.ui;
 
 import static com.google.gwt.query.client.GQuery.$;
 
 import java.util.List;
 
+import org.chenmin.auto.client.api.GreetingService;
+import org.chenmin.auto.client.api.GreetingServiceAsync;
+import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.shared.FlightWG;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;

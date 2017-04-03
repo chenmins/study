@@ -1,4 +1,4 @@
-package org.chenmin.auto.server;
+package org.chenmin.auto.client.api;
 
 public interface AirValid {
 	

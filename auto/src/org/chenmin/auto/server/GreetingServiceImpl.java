@@ -3,7 +3,8 @@ package org.chenmin.auto.server;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.chenmin.auto.client.GreetingService;
+import org.chenmin.auto.client.api.AirValid;
+import org.chenmin.auto.client.api.GreetingService;
 import org.chenmin.auto.server.air.TigerAir;
 import org.chenmin.auto.server.db.Test;
 import org.chenmin.auto.shared.FieldVerifier;

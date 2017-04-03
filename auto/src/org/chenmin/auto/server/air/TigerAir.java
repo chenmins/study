@@ -1,6 +1,6 @@
 package org.chenmin.auto.server.air;
 
-import org.chenmin.auto.server.AirValid;
+import org.chenmin.auto.client.api.AirValid;
 
 public class TigerAir implements AirValid {
 
