@@ -7,6 +7,7 @@ import java.util.List;
 import org.chenmin.auto.client.api.GreetingService;
 import org.chenmin.auto.client.api.GreetingServiceAsync;
 import org.chenmin.auto.client.api.JS;
+import org.chenmin.auto.client.api.Store;
 import org.chenmin.auto.shared.FlightWG;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;
@@ -36,8 +37,8 @@ public class Order extends Composite {
 	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
 	private VerticalPanel panel = new VerticalPanel();
-	private Button clear = new Button("获得订单");
-	private Button click = new Button("校验订单");
+	private Button getOrderButton = new Button("获得订单");
+	private Button validButton = new Button("校验订单");
 	private Button put = new Button("put!");
 	private Button get = new Button("get!");
 	private Label label = new Label("wait!");
@@ -63,9 +64,9 @@ public class Order extends Composite {
 	private void init() {
 
 		HorizontalPanel hp = new HorizontalPanel();
-		hp.add(clear);
+		hp.add(getOrderButton);
 		hp.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;"));
-		hp.add(click);
+		hp.add(validButton);
 		hp.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;"));
 		hp.add(put);
 		hp.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;"));
@@ -90,12 +91,19 @@ public class Order extends Composite {
 
 	private void initEvent() {
 		GWT.log("initEvent");
-		clear.addClickHandler(new ClickHandler() {
+		String order = Store.getItem("order");
+		if(order!=null){
+			val.setText(order);
+			put(val.getText());
+		}
+		
+		getOrderButton.addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
 				// String keys = key.getText();
-				put(event, val.getText());
+				put(val.getText());
+				Store.setItem("order", val.getText());
 				// showinfo(event, keys + "get ok!");
 			}
 		});
@@ -118,7 +126,7 @@ public class Order extends Composite {
 				val.setText($(keys).val());
 			}
 		});
-		click.addClickHandler(new ClickHandler() {
+		validButton.addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
@@ -133,7 +141,7 @@ public class Order extends Composite {
 		getFormsel();
 	}
 
-	public void put(final ClickEvent event, String textToServer) {
+	public void put( String textToServer) {
 		AsyncCallback<OrderWG> callback = new AsyncCallback<OrderWG>() {
 
 			@Override

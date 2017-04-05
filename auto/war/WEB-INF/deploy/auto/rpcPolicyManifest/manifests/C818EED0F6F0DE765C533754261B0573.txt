@@ -1,2 +1,0 @@
-serviceClass: org.chenmin.auto.client.GreetingService
-path: 090DCF395159972BFB9CC075493938FB.gwt.rpc
