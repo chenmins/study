@@ -193,6 +193,8 @@ public class Order extends Composite {
 				index++;
 			}
 			fightPanel.add(fight);
+		}else{
+			fightPanel.add(new HTML(val.getText()+"订单不存在，请查证"));
 		}
 		if(!passenger.isEmpty()){
 			pass = new Grid(passenger.size()+1,9);
