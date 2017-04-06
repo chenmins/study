@@ -146,7 +146,7 @@ Test targets suppressed because -junit argument was not specified when running w
   </target>
 -->
 	
-	 <target name="publish"   description="publish this project">
+	 <target name="publish" depends="gwtc"   description="publish this project">
 	    <delete dir="${pub.dir}/" failonerror="false" />
 	 	  <copy todir="${pub.dir}/">
 	 	      <fileset dir="war" excludes="*"/>
