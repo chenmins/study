@@ -5,6 +5,8 @@
 
   <!-- Configure path to GWT SDK -->
   <property name="gwt.sdk" location="D:/eclipse/gwt-2.7.0" />
+	
+  <property name="pub.dir" location="D:/git/appidc8f3angzue/webapps/auto" />
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
@@ -144,8 +146,15 @@ Test targets suppressed because -junit argument was not specified when running w
     <antcall target="test.prod" />
   </target>
 -->
+	
+	 <target name="publish" depends="gwtc" description="publish this project">
+	    <delete dir="${pub.dir}/" failonerror="false" />
+	 	  <copy todir="${pub.dir}/">
+	 	      <fileset dir="war" excludes="**/*"/>
+	 	    </copy>
+	  </target>
 
-  <target name="build" depends="gwtc" description="Build this project" />
+  <target name="build" depends="publish" description="Build this project" />
 
   <target name="war" depends="build" description="Create a war file">
     <zip destfile="Auto.war" basedir="war"/>
