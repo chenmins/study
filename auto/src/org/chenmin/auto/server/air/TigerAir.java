@@ -7,7 +7,7 @@ public class TigerAir implements AirValid {
 	@Override
 	public boolean isMe(String url) {
 		System.out.println("isMe:"+url);
-		return true;
+		return url.contains("tigerair");
 	}
 
 	@Override
