@@ -36,7 +36,6 @@
     <copy todir="war/WEB-INF/classes">
       <fileset dir="src" excludes="**/*.java"/>
     </copy>
-  	<zip destfile="war/WEB-INF/lib/gwt-auto.jar" basedir="war/WEB-INF/classes"/>
   </target>
 
   <target name="gwtc" depends="javac" description="GWT compile to JavaScript (production mode)">
@@ -147,11 +146,14 @@ Test targets suppressed because -junit argument was not specified when running w
   </target>
 -->
 	
-	 <target name="publish" depends="gwtc" description="publish this project">
+	 <target name="publish" depends="gwtc"  description="publish this project">
 	    <delete dir="${pub.dir}/" failonerror="false" />
 	 	  <copy todir="${pub.dir}/">
-	 	      <fileset dir="war" excludes="**/*"/>
+	 	      <fileset dir="war" excludes="*"/>
 	 	    </copy>
+	 	<zip destfile="${pub.dir}/WEB-INF/lib/gwt-auto.jar" basedir="${pub.dir}/WEB-INF/classes"/>
+	 	 <delete file="${pub.dir}/WEB-INF/lib/gwt-servlet.jar" failonerror="false" />
+	 	 <delete dir="${pub.dir}/WEB-INF/classes" failonerror="false" />
 	  </target>
 
   <target name="build" depends="publish" description="Build this project" />
