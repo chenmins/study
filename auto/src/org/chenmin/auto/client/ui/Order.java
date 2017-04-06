@@ -15,6 +15,8 @@ import org.chenmin.auto.shared.PassengerWG;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -96,7 +98,18 @@ public class Order extends Composite {
 			val.setText(order);
 			put(val.getText());
 		}
-		
+		val.addKeyUpHandler(new KeyUpHandler() {
+			
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				int a = event.getNativeKeyCode();
+				GWT.log("getNativeKeyCode:"+a);
+				if(a ==13){
+					put(val.getText());
+					Store.setItem("order", val.getText());
+				}
+			}
+		});
 		getOrderButton.addClickHandler(new ClickHandler() {
 
 			@Override
