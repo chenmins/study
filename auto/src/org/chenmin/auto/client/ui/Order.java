@@ -4,15 +4,20 @@ import static com.google.gwt.query.client.GQuery.$;
 
 import java.util.List;
 
+import org.chenmin.auto.client.api.AirLineVerifier;
+import org.chenmin.auto.client.api.AirLineVerifierAsync;
 import org.chenmin.auto.client.api.GreetingService;
 import org.chenmin.auto.client.api.GreetingServiceAsync;
 import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Store;
+import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.shared.FlightWG;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
@@ -38,6 +43,10 @@ public class Order extends Composite {
 	 */
 	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
+	private final AirLineVerifierAsync airService =  GWT.create(AirLineVerifier.class);
+	
+	private Verifier verifier[] =null;
+	
 	private VerticalPanel panel = new VerticalPanel();
 	private Button getOrderButton = new Button("获得订单");
 	private Button validButton = new Button("校验订单");
@@ -93,11 +102,43 @@ public class Order extends Composite {
 
 	private void initEvent() {
 		GWT.log("initEvent");
+		
+		AsyncCallback<Verifier[]> callback = new AsyncCallback<Verifier[]>() {
+			
+			@Override
+			public void onSuccess(Verifier[] result) {
+				verifier = result;
+				if(result==null||result.length==0){
+					Window.alert(Window.Location.getHref()+"\n没有任何校验器");
+				}else{
+					for(Verifier v:verifier){
+						GWT.log("Verifier.name:"+v.name());
+						GWT.log("Verifier.sels:"+v.sels());
+						GWT.log("Verifier.type:"+v.type());
+					}
+				}
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+		};
+		airService.getVerifier(Window.Location.getHref(), callback );
+		
 		String order = Store.getItem("order");
 		if(order!=null){
 			val.setText(order);
 			put(val.getText());
 		}
+		val.addChangeHandler(new ChangeHandler() {
+			
+			@Override
+			public void onChange(ChangeEvent event) {
+				put(val.getText());
+				Store.setItem("order", val.getText());
+			}
+		});
 		val.addKeyUpHandler(new KeyUpHandler() {
 			
 			@Override
