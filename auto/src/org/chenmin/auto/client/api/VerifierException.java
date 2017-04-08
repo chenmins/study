@@ -2,6 +2,10 @@ package org.chenmin.auto.client.api;
 
 public class VerifierException extends Exception{
 
+	public VerifierException(String string) {
+		super(string);
+	}
+
 	/**
 	 * 
 	 */

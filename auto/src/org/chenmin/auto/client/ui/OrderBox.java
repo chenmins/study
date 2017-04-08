@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.Store;
+import org.chenmin.auto.client.api.VerifierException;
 import org.chenmin.auto.shared.FlightWG;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;
@@ -18,7 +19,6 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -61,12 +61,16 @@ public class OrderBox extends Composite {
 	@UiField
 	VerticalPanel fightPanel;
 	
+	@UiField
+	HTML info;
+	
 	private Grid fight = new Grid();
 	private Grid pass = new Grid();
 	
 	private void initEvent() {
 		GWT.log("initEvent");
-		
+//		info.setHTML(Factory.loading+":1s:"+GWT.getModuleBaseForStaticFiles());
+		button.setVisible(false);
 		String order = Store.getItem("order");
 		if(order!=null){
 			orderID.setText(order);
@@ -77,7 +81,22 @@ public class OrderBox extends Composite {
 
 	@UiHandler("button")
 	void onClick(ClickEvent e) {
-		Window.alert("Hello!");
+		valid();
+	}
+
+
+	private void valid() {
+		info(Factory.loading+"正在为你努力验证，订单"+orderID.getText() + "");
+		try {
+			boolean b = Factory.isValid(orderID.getText());
+			if(b){
+				info("订单"+orderID.getText() + "，验证通过");
+			}else{
+				info("订单"+orderID.getText() + "，验证失败");
+			}
+		} catch (VerifierException e1) {
+			info("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
+		}
 	}
 
 	@UiHandler("orderID")
@@ -90,30 +109,40 @@ public class OrderBox extends Composite {
 	public void onKeyUp(KeyUpEvent event) {
 		int a = event.getNativeKeyCode();
 		GWT.log("getNativeKeyCode:" + a);
-		if (a == 13) {
+		if (a == 16) {
 			put(orderID.getText());
 			Store.setItem("order", orderID.getText());
 		}
+		if(a==13){
+			valid();
+		}
+	}
+	
+	public void info(String infoHTML){
+		info.setHTML(infoHTML);
 	}
 
 	public void put(String textToServer) {
+		info(Factory.loading+"正在为你努力查询，订单"+orderID.getText() + "");
+		fightPanel.clear();
 		AsyncCallback<OrderWG> callback = new AsyncCallback<OrderWG>() {
 
 			@Override
 			public void onSuccess(OrderWG result) {
+				info("");
 				putOrder(result);
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
+				info(caught.getMessage());
 			}
 		};
 		Factory.getOrder(textToServer, callback);
 	}
 
 	public void putOrder(OrderWG result) {
-		fightPanel.clear();
+		
 		List<FlightWG> flight = result.getFlight();
 		List<PassengerWG> passenger = result.getPassenger();
 		GWT.log("flight:" + flight);
@@ -136,7 +165,7 @@ public class OrderBox extends Composite {
 			}
 			fightPanel.add(fight);
 		} else {
-			fightPanel.add(new HTML(orderID.getText() + "订单不存在，请查证"));
+			info(orderID.getText() + "订单不存在，请查证");
 		}
 		if (!passenger.isEmpty()) {
 			pass = new Grid(passenger.size() + 1, 9);

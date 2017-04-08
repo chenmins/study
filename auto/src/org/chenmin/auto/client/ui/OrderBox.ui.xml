@@ -12,10 +12,15 @@
 			widget names. The ui:field attribute binds an element to a field in the owner 
 			class. See the GWT docs on UI Binder for more details. -->
 		<g:VerticalPanel>
+			<g:HTML ui:field="info"></g:HTML>
 			<g:HorizontalPanel>
 				<g:TextBox ui:field="orderID"></g:TextBox>
 				<g:Button styleName="{style.important}" ui:field="button"
 					text="验证订单" />
+				<g:HTML>
+				<font color="red">[Enter]</font>校验，[Shift]查单
+				</g:HTML>
+					
 			</g:HorizontalPanel>
 			<g:VerticalPanel ui:field="fightPanel">
 			</g:VerticalPanel>

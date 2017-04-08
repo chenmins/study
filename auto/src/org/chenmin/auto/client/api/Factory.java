@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.TigerAirPassagerVerifier;
-
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -30,6 +29,8 @@ public class Factory {
 	}
 	
 	private static boolean isValid(String orderID,List<Verifier> alist) throws VerifierException{
+		if(alist.isEmpty())
+			throw new VerifierException("当前页面没有验证规则");
 		for(Verifier v:alist){
 			if(!v.isValid(orderID)){
 				return false;
@@ -55,5 +56,6 @@ public class Factory {
 	
 	public static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
 	public static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
-	
+	public static String baseURL = GWT.getModuleBaseForStaticFiles().contains("127")?"":(GWT.getModuleBaseForStaticFiles()+"../");
+	public static String loading = "<img src='"+baseURL+"loading.gif'/>";
 }
