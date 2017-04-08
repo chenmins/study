@@ -3,8 +3,10 @@ package org.chenmin.auto.client.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.chenmin.auto.client.ui.LogBox;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.TigerAirPassagerVerifier;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
@@ -22,6 +24,7 @@ public class Factory {
 		List<Verifier> alist = new ArrayList<>();
 		for(Verifier v:vlist){
 			if(v.isMe(url)){
+				log.info("Verifier:"+v.name()+" 匹配成功！");
 				alist.add(v);
 			}
 		}
@@ -49,13 +52,32 @@ public class Factory {
 	
 
 	public final static AirLineAsync airLineService =  GWT.create(AirLine.class);
+	
+	public static OrderWG order;
 
-	public static void getOrder(String orderID, AsyncCallback<OrderWG> callback){
-		airLineService.getOrder(orderID, callback);
+	public static void getOrder(String orderID,final AsyncCallback<OrderWG> callback){
+		AsyncCallback<OrderWG> callbackPorxy = new AsyncCallback<OrderWG>() {
+			
+			@Override
+			public void onSuccess(OrderWG result) {
+				order = result;
+				callback.onSuccess(result);
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				callback.onFailure(caught);
+			}
+		};
+		airLineService.getOrder(orderID, callbackPorxy );
 	}
+	
+	public static LogBox log = new LogBox();
 	
 	public static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
 	public static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
+	public static DateTimeFormat sdf_hm = DateTimeFormat.getFormat("[HH:mm:ss] ");
+
 	public static String baseURL = GWT.getModuleBaseForStaticFiles().contains("127")?"":(GWT.getModuleBaseForStaticFiles()+"../");
 	public static String loading = "<img src='"+baseURL+"loading.gif'/>";
 }

@@ -44,7 +44,8 @@ public class TigerAirPassagerVerifier implements Verifier{
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair.com");
+//		return url.contains("tigerair.com");
+		return true;
 	}
 	
 }

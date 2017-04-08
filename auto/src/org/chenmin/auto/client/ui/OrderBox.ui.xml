@@ -14,13 +14,15 @@
 		<g:VerticalPanel>
 			<g:HTML ui:field="info"></g:HTML>
 			<g:HorizontalPanel>
+				<g:HTML>
+				<font color="blue">[Shift]</font>查单
+				</g:HTML>
 				<g:TextBox ui:field="orderID"></g:TextBox>
 				<g:Button styleName="{style.important}" ui:field="button"
 					text="验证订单" />
 				<g:HTML>
-				<font color="red">[Enter]</font>校验，[Shift]查单
+				<font color="red">[Enter]</font>校验
 				</g:HTML>
-					
 			</g:HorizontalPanel>
 			<g:VerticalPanel ui:field="fightPanel">
 			</g:VerticalPanel>

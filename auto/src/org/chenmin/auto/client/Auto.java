@@ -1,5 +1,6 @@
 package org.chenmin.auto.client;
 
+import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.ui.OrderBox;
 
@@ -27,6 +28,7 @@ public class Auto implements EntryPoint {
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
 //		dialogVPanel.add(new Order());
+		dialogVPanel.add(Factory.log);
 		dialogVPanel.add(new OrderBox());
 		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
 		dialogVPanel.add(closeButton);

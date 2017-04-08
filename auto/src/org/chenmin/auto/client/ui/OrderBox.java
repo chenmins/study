@@ -87,16 +87,32 @@ public class OrderBox extends Composite {
 
 	private void valid() {
 		info(Factory.loading+"正在为你努力验证，订单"+orderID.getText() + "");
-		try {
-			boolean b = Factory.isValid(orderID.getText());
-			if(b){
-				info("订单"+orderID.getText() + "，验证通过");
-			}else{
-				info("订单"+orderID.getText() + "，验证失败");
+		AsyncCallback<OrderWG> callback = new AsyncCallback<OrderWG>() {
+
+			@Override
+			public void onSuccess(OrderWG result) {
+				info("");
+				try {
+					boolean b = Factory.isValid(orderID.getText());
+					if(b){
+						info("订单"+orderID.getText() + "，验证通过");
+					}else{
+						info("订单"+orderID.getText() + "，验证失败");
+						Factory.log.error("订单"+orderID.getText() + "，验证失败");
+						//Factory.log.clear();
+					}
+				} catch (VerifierException e1) {
+					info("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
+				}
 			}
-		} catch (VerifierException e1) {
-			info("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
-		}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				info(caught.getMessage());
+			}
+		};
+		Factory.getOrder(orderID.getText(), callback);
+		
 	}
 
 	@UiHandler("orderID")
