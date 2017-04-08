@@ -7,6 +7,7 @@ import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.TigerAirPassagerVerifier;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -51,5 +52,8 @@ public class Factory {
 	public static void getOrder(String orderID, AsyncCallback<OrderWG> callback){
 		airLineService.getOrder(orderID, callback);
 	}
+	
+	public static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
+	public static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
 	
 }

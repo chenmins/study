@@ -1,7 +1,7 @@
 package org.chenmin.auto.client;
 
 import org.chenmin.auto.client.api.JS;
-import org.chenmin.auto.client.ui.Order;
+import org.chenmin.auto.client.ui.OrderBox;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -19,14 +19,15 @@ public class Auto implements EntryPoint {
 	static final DialogBox dialogBox = new DialogBox();
 	
 	public static void show() {
-		dialogBox.setText("小助理 V1.13:" + Window.getTitle());
+		dialogBox.setText("小助理 V1.14:" + Window.getTitle());
 		dialogBox.setAnimationEnabled(true);
 		final Button closeButton = new Button("隐藏");
 		closeButton.getElement().setId("closeButton");
 
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
-		dialogVPanel.add(new Order());
+//		dialogVPanel.add(new Order());
+		dialogVPanel.add(new OrderBox());
 		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
 		dialogVPanel.add(closeButton);
 		dialogBox.setWidget(dialogVPanel);
