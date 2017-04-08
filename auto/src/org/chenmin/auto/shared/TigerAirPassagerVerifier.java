@@ -41,5 +41,10 @@ public class TigerAirPassagerVerifier implements Verifier{
 	public boolean isValid(String orderID) throws VerifierException {
 		return false;
 	}
+
+	@Override
+	public boolean isMe(String url) {
+		return url.contains("tigerair.com");
+	}
 	
 }

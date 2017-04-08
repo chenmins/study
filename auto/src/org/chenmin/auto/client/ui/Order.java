@@ -4,13 +4,10 @@ import static com.google.gwt.query.client.GQuery.$;
 
 import java.util.List;
 
-import org.chenmin.auto.client.api.AirLineVerifier;
-import org.chenmin.auto.client.api.AirLineVerifierAsync;
-import org.chenmin.auto.client.api.GreetingService;
-import org.chenmin.auto.client.api.GreetingServiceAsync;
+import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Store;
-import org.chenmin.auto.client.api.Verifier;
+import org.chenmin.auto.client.api.VerifierException;
 import org.chenmin.auto.shared.FlightWG;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.PassengerWG;
@@ -37,15 +34,6 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Order extends Composite {
-	/**
-	 * Create a remote service proxy to talk to the server-side Greeting
-	 * service.
-	 */
-	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
-
-	private final AirLineVerifierAsync airService =  GWT.create(AirLineVerifier.class);
-	
-	private Verifier verifier[] =null;
 	
 	private VerticalPanel panel = new VerticalPanel();
 	private Button getOrderButton = new Button("获得订单");
@@ -102,29 +90,6 @@ public class Order extends Composite {
 
 	private void initEvent() {
 		GWT.log("initEvent");
-		
-		AsyncCallback<Verifier[]> callback = new AsyncCallback<Verifier[]>() {
-			
-			@Override
-			public void onSuccess(Verifier[] result) {
-				verifier = result;
-				if(result==null||result.length==0){
-					Window.alert(Window.Location.getHref()+"\n没有任何校验器");
-				}else{
-					for(Verifier v:verifier){
-						GWT.log("Verifier.name:"+v.name());
-						GWT.log("Verifier.sels:"+v.sels());
-						GWT.log("Verifier.type:"+v.type());
-					}
-				}
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
-			}
-		};
-		airService.getVerifier(Window.Location.getHref(), callback );
 		
 		String order = Store.getItem("order");
 		if(order!=null){
@@ -192,7 +157,6 @@ public class Order extends Composite {
 				click(vals, JS.formData(keys));
 			}
 		});
-		getFormsel();
 	}
 
 	public void put( String textToServer) {
@@ -208,7 +172,7 @@ public class Order extends Composite {
 				Window.alert(caught.getMessage());
 			}
 		};
-		greetingService.getOrder(textToServer, callback);
+		Factory.getOrder(textToServer, callback);
 	}
 
 	public void putOrder(OrderWG result) {
@@ -265,42 +229,20 @@ public class Order extends Composite {
 		}
 	}
 
-	public void getFormsel() {
-		AsyncCallback<String> callback = new AsyncCallback<String>() {
-
-			@Override
-			public void onSuccess(String result) {
-				key.setText(result);
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
-			}
-		};
-		GWT.log("Window.Location.getHostName():" + Window.Location.getHostName());
-		GWT.log("Window.Location.getHref():" + Window.Location.getHref());
-		greetingService.getFormSel(Window.Location.getHref(), callback);
-	}
+	 
 
 	public void click(final String orderID, final String formdata) {
-		AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
-
-			@Override
-			public void onSuccess(Boolean result) {
-				if (result) {
-					Window.alert("订单：" + orderID + "\n校验成功！");
-				} else {
-					Window.alert("订单：" + orderID + "\n\n\n校验失败！");
-				}
+		
+		try {
+			boolean b = Factory.isValid(orderID);
+			if(b){
+				Window.alert("订单"+orderID+"验证成功");
+			}else{
+				Window.alert("订单"+orderID+"验证错误");
 			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
-			}
-		};
-		greetingService.isValid(Window.Location.getHref(), orderID, formdata, callback);
+		} catch (VerifierException e) {
+			Window.alert("订单"+orderID+"验证错误："+e.getLocalizedMessage());
+		}
 	}
 
 	public void showinfo(ClickEvent event, String text) {

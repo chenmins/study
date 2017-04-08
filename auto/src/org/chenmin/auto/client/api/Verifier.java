@@ -6,6 +6,8 @@ public interface Verifier extends java.io.Serializable{
 		FormData,HTML,Vals,Texts
 	}
 	
+	boolean isMe(String url);
+	
 	TypeName type();
 	
 	String name();
