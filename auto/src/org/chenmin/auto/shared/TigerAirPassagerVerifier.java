@@ -113,11 +113,13 @@ public class TigerAirPassagerVerifier implements Verifier{
 							if(Title.equals("MR")){
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
+								break;
 							}
 						}else{
 							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")){
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
+								break;
 							}
 						}
 					}
