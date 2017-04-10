@@ -3,6 +3,7 @@ package org.chenmin.auto.client.check;
 import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
+import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierBean;
 import org.chenmin.auto.client.api.VerifierException;
@@ -103,12 +104,14 @@ public class TigerAirPassagerVerifier implements Verifier{
 						Factory.log.info("Title:"+Title+",sex:"+sex);
 						if(sex.equals("男")){
 							if(Title.equals("MR")){
+								JS.setHtml("#pass"+validCount,"<font color='red'>OK</font>");
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
 							}
 						}else{
 							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")){
+								JS.setHtml("#pass"+validCount,"<font color='red'>OK</font>");
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;

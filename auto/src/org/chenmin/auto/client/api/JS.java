@@ -11,6 +11,10 @@ public class JS {
 		return $(sels).html();
 	}
 	
+	public static void setHtml(String sels,String html){
+		 $(sels).html(html);
+	}
+	
 	public static String matcherOne(String r4, String pattern, int group) {
 		RegExp r = RegExp.compile(pattern);
 		MatchResult m = r.exec(r4);

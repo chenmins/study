@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
+import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierBean;
 import org.chenmin.auto.client.api.VerifierException;
@@ -73,6 +74,7 @@ public class TigerAirFlightVerifier implements Verifier {
 			Factory.log.info("time_date:"+time_date+",dt:"+dt);
 			if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
 				Factory.log.info("航班路线信息ok");
+				JS.setHtml("#fight"+index,"<font color='red'>OK</font>");
 				index++;
 			}
 		}
@@ -87,6 +89,7 @@ public class TigerAirFlightVerifier implements Verifier {
 			Factory.log.info("time_date:"+time_date+",dt:"+dt);
 			if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
 				Factory.log.info("航班路线信息ok");
+				JS.setHtml("#fight"+index,"<font color='red'>OK</font>");
 				index++;
 			}
 		}

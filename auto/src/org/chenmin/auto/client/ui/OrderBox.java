@@ -168,19 +168,21 @@ public class OrderBox extends Composite {
 		GWT.log("flight:" + flight);
 		GWT.log("passenger:" + passenger);
 		if (!flight.isEmpty()) {
-			fight = new Grid(flight.size() + 1, 5);
-			fight.setHTML(0, 0, "航司");
-			fight.setHTML(0, 1, "出发");
-			fight.setHTML(0, 2, "到达");
-			fight.setHTML(0, 3, "起飞时间");
-			fight.setHTML(0, 4, "航班号");
+			fight = new Grid(flight.size() + 1, 6);
+			fight.setHTML(0, 0, "状态");
+			fight.setHTML(0, 1, "航司");
+			fight.setHTML(0, 2, "出发");
+			fight.setHTML(0, 3, "到达");
+			fight.setHTML(0, 4, "起飞时间");
+			fight.setHTML(0, 5, "航班号");
 			int index = 1;
 			for (FlightWG f : flight) {
-				fight.setHTML(index, 0, f.getCarrier());
-				fight.setHTML(index, 1, f.getDepAirportCode());
-				fight.setHTML(index, 2, f.getArrAirportCode());
-				fight.setHTML(index, 3, Factory.sdf_ymdhm.format(f.getDepTime()));
-				fight.setHTML(index, 4, f.getFlightNum());
+				fight.setHTML(index, 0, "<span id='fight"+(index-1)+"'></span>");
+				fight.setHTML(index, 1, f.getCarrier());
+				fight.setHTML(index, 2, f.getDepAirportCode());
+				fight.setHTML(index, 3, f.getArrAirportCode());
+				fight.setHTML(index, 4, Factory.sdf_ymdhm.format(f.getDepTime()));
+				fight.setHTML(index, 5, f.getFlightNum());
 				index++;
 			}
 			fightPanel.add(fight);
@@ -188,27 +190,29 @@ public class OrderBox extends Composite {
 			info(orderID.getText() + "订单不存在，请查证");
 		}
 		if (!passenger.isEmpty()) {
-			pass = new Grid(passenger.size() + 1, 9);
-			pass.setHTML(0, 0, "姓");
-			pass.setHTML(0, 1, "名");
-			pass.setHTML(0, 2, "性");
-			pass.setHTML(0, 3, "类型");
-			// pass.setHTML(0, 4, "证件");
-			pass.setHTML(0, 5, "证件ID");
-			// pass.setHTML(0, 6, "证件归宿");
-			pass.setHTML(0, 7, "证件生日");
-			pass.setHTML(0, 8, "过期日期");
+			pass = new Grid(passenger.size() + 1, 10);
+			fight.setHTML(0, 0, "状态");
+			pass.setHTML(0, 1, "姓");
+			pass.setHTML(0, 2, "名");
+			pass.setHTML(0, 3, "性");
+			pass.setHTML(0, 4, "类型");
+			// pass.setHTML(0, 5, "证件");
+			pass.setHTML(0, 6, "证件ID");
+			// pass.setHTML(0,7, "证件归宿");
+			pass.setHTML(0, 8, "证件生日");
+			pass.setHTML(0, 9, "过期日期");
 			int index = 1;
 			for (PassengerWG f : passenger) {
-				pass.setHTML(index, 0, f.getFirstname());
-				pass.setHTML(index, 1, f.getLastname());
-				pass.setHTML(index, 2, f.getSexy());
-				pass.setHTML(index, 3, f.getType());
-				// pass.setHTML(index, 4, f.getCredentialsname());
-				pass.setHTML(index, 5, f.getCredentialsID());
-				// pass.setHTML(index, 6, f.getNationality());
-				pass.setHTML(index, 7, Factory.sdf_ymd.format(f.getBirthday()));
-				pass.setHTML(index, 8, Factory.sdf_ymd.format(f.getExpirydate()));
+				pass.setHTML(index, 0, "<span id='pass"+(index-1)+"'></span>");
+				pass.setHTML(index, 1, f.getFirstname());
+				pass.setHTML(index, 2, f.getLastname());
+				pass.setHTML(index, 3, f.getSexy());
+				pass.setHTML(index, 4, f.getType());
+				// pass.setHTML(index, 5, f.getCredentialsname());
+				pass.setHTML(index, 6, f.getCredentialsID());
+				// pass.setHTML(index, 7, f.getNationality());
+				pass.setHTML(index, 8, Factory.sdf_ymd.format(f.getBirthday()));
+				pass.setHTML(index, 9, Factory.sdf_ymd.format(f.getExpirydate()));
 				index++;
 			}
 			fightPanel.add(pass);
