@@ -87,32 +87,24 @@ public class OrderBox extends Composite {
 
 	private void valid() {
 		info(Factory.loading+"正在为你努力验证，订单"+orderID.getText() + "");
-		AsyncCallback<OrderWG> callback = new AsyncCallback<OrderWG>() {
-
-			@Override
-			public void onSuccess(OrderWG result) {
-				info("");
-				try {
-					boolean b = Factory.isValid(orderID.getText());
-					if(b){
-						success("订单"+orderID.getText() + "，验证通过");
-						Factory.log.hide();
-					}else{
-						error("订单"+orderID.getText() + "，验证失败");
-						Factory.log.error("订单"+orderID.getText() + "，验证失败");
-					}
-				} catch (VerifierException e1) {
-					error("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
+		if(Factory.order==null){
+			AsyncCallback<OrderWG> callback = new AsyncCallback<OrderWG>() {
+				
+				@Override
+				public void onSuccess(OrderWG result) {
+					info("");
+					validReal();
 				}
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				error(caught.getMessage());
-			}
-		};
-		Factory.getOrder(orderID.getText(), callback);
-		
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					error(caught.getMessage());
+				}
+			};
+			Factory.getOrder(orderID.getText(), callback);
+		}else{
+			validReal();
+		}
 	}
 
 	@UiHandler("orderID")
@@ -220,6 +212,22 @@ public class OrderBox extends Composite {
 				index++;
 			}
 			fightPanel.add(pass);
+		}
+	}
+
+
+	private void validReal() {
+		try {
+			boolean b = Factory.isValid(orderID.getText());
+			if(b){
+				success("订单"+orderID.getText() + "，验证通过");
+				Factory.log.hide();
+			}else{
+				error("订单"+orderID.getText() + "，验证失败");
+				Factory.log.error("订单"+orderID.getText() + "，验证失败");
+			}
+		} catch (VerifierException e1) {
+			error("订单"+orderID.getText() + "，验证失败：<br />"+e1.getLocalizedMessage());
 		}
 	}
 }

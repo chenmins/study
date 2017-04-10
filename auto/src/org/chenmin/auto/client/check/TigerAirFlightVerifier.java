@@ -1,10 +1,11 @@
 package org.chenmin.auto.client.check;
 
+import java.util.Date;
 import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
-import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Verifier;
+import org.chenmin.auto.client.api.VerifierBean;
 import org.chenmin.auto.client.api.VerifierException;
 import org.chenmin.auto.shared.FlightWG;
 
@@ -17,63 +18,83 @@ public class TigerAirFlightVerifier implements Verifier {
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair.com");
+		return url.contains("tigerair.com")||url.contains("127");
+	}
+	
+	private VerifierBean[] verifierBean;
+
+	public void setVerifierBean(VerifierBean[] verifierBean) {
+		this.verifierBean = verifierBean;
+	}
+
+	public VerifierBean[] getVerifierBean() {
+		return verifierBean;
+	}
+
+	public TigerAirFlightVerifier() {
+		this.verifierBean =  new VerifierBean[]{
+				new VerifierBean("f1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
+				new VerifierBean("t1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-right",Verifier.TypeName.HTML),
+				new VerifierBean("f2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
+				new VerifierBean("t2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__flight > div.media-right",Verifier.TypeName.HTML),
+				new VerifierBean("time1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__time > div.media-body > div",Verifier.TypeName.HTML),
+				new VerifierBean("date1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),
+				new VerifierBean("time2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > div",Verifier.TypeName.HTML),
+				new VerifierBean("date2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),
+				};
 	}
 
 	@Override
-	public TypeName type() {
-		return TypeName.HTML;
-	}
-
-	@Override
-	public String name() {
-		return "TigerAirFlightVerifier";
-	}
-
-	@Override
-	public String sels() {
-		return ".price__flight";
-	}
-
-	String data;
-
-	@Override
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	@Override
-	public String getData() {
-		return this.data;
-	}
-
-
-	@Override
-	public boolean isValid(String orderID) throws VerifierException {
+	public boolean isValid() throws VerifierException {
 		if(Factory.order.getFlight().isEmpty()){
 			throw new VerifierException("订单不存在，无法校验");
 		}
-		if(this.data==null||this.data.isEmpty()){
-			throw new VerifierException("表单数据不存在，无法校验");
-		}
 		Factory.log.info("航班路线信息开始核对");
-		Factory.log.info(getData());
-//		 <div class="media-body">SIN</div>
-//         <div class="media-right">HKG</div><span class="icon ico-plane"></span>
-		String f = JS.matcherOne(getData(), "<div class=\"media-body\">([A-Za-z0-9]+)</div>", 1);
-		String t = JS.matcherOne(getData(), "<div class=\"media-right\">([A-Za-z0-9]+)</div>", 1);
+		VerifierBean[] vb = getVerifierBean() ;
+		String f1=vb[0].getData().toString();
+		String t1=vb[1].getData().toString();
+		String f2=vb[2].getData().toString();
+		String t2=vb[3].getData().toString();
+		String time1=vb[4].getData().toString();
+		String date1=vb[5].getData().toString();
+		String time2=vb[6].getData().toString();
+		String date2=vb[7].getData().toString();
+		
 		List<FlightWG> ft = Factory.order.getFlight();
+		int index=0;
 		for(FlightWG fw:ft){
+			String time_date = time1+" "+date1;
+			Date dtime = fw.getDepTime();
+			String dt = Factory.sdf_hmmd.format(dtime);
 			String ff = fw.getDepAirportCode();
 			String tt = fw.getArrAirportCode();
-			Factory.log.info("f:"+f+",ff:"+ff);
-			Factory.log.info("t:"+t+",tt:"+tt);
-			if(ff.equals(f)&&tt.equals(t)){
+			Factory.log.info("f1:"+f1+",ff:"+ff);
+			Factory.log.info("t1:"+t1+",tt:"+tt);
+			Factory.log.info("time_date:"+time_date+",dt:"+dt);
+			if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
 				Factory.log.info("航班路线信息ok");
-				return true;
+				index++;
 			}
 		}
-		return false;
+		for(FlightWG fw:ft){
+			String time_date = time2+" "+date2;
+			Date dtime = fw.getDepTime();
+			String dt = Factory.sdf_hmmd.format(dtime);
+			String ff = fw.getDepAirportCode();
+			String tt = fw.getArrAirportCode();
+			Factory.log.info("f2:"+f2+",ff:"+ff);
+			Factory.log.info("t2:"+t2+",tt:"+tt);
+			Factory.log.info("time_date:"+time_date+",dt:"+dt);
+			if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
+				Factory.log.info("航班路线信息ok");
+				index++;
+			}
+		}
+		int size = Factory.order.getFlight().size();
+		boolean b = index==size;
+		if(index<size)
+			throw new VerifierException("只有"+index+"个航班验证通过，请认真填写");
+		return b;
 	}
 	
 	

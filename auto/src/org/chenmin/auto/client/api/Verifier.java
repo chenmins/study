@@ -8,16 +8,10 @@ public interface Verifier extends java.io.Serializable{
 	
 	boolean isMe(String url);
 	
-	TypeName type();
+	VerifierBean[] getVerifierBean();
+
+	void setVerifierBean(VerifierBean[] verifierBean);
 	
-	String name();
-	
-	String sels();
-	
-	void setData(String data);
-	
-	String getData();
-	
-	boolean isValid(String orderID) throws VerifierException;
+	boolean isValid() throws VerifierException;
 
 }
