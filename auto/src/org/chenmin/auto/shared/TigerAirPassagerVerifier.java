@@ -6,6 +6,10 @@ import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierException;
 
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONValue;
+
 public class TigerAirPassagerVerifier implements Verifier{
 
 	/**
@@ -53,7 +57,17 @@ public class TigerAirPassagerVerifier implements Verifier{
 		List<PassengerWG> p = Factory.order.getPassenger();
 		Factory.log.info("订单乘客开始核对，以下为订单乘客数据");
 		Factory.log.info(p.toString());
-		
+		JSONValue json = JSONParser.parseStrict(getData());
+		JSONObject o = json.isObject();
+//		"insuranceQuoteInput.ParticipantCount": "1",
+		Factory.log.info("订单乘客人数核对，以下为表单乘客人数");
+		String participantCount = o.get("insuranceQuoteInput.ParticipantCount").isString().toString();
+		Factory.log.info(participantCount);
+		Factory.log.info("订单乘客人数核对，以下为订单乘客人数");
+		Factory.log.info(""+p.size());
+		if(participantCount.equals(""+p.size())){
+			throw new VerifierException("订单人数和填写人数不匹配，无法校验");
+		}
 		return false;
 	}
 
