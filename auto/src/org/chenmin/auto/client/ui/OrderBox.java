@@ -147,11 +147,15 @@ public class OrderBox extends Composite {
 			public void onSuccess(OrderWG result) {
 				info("");
 				putOrder(result);
+				orderID.setFocus(true);
+				GWT.log("setFocus");
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
 				info(caught.getMessage());
+				orderID.setFocus(true);
+				GWT.log("setFocus");
 			}
 		};
 		Factory.getOrder(textToServer, callback);
@@ -185,10 +189,10 @@ public class OrderBox extends Composite {
 		}
 		if (!passenger.isEmpty()) {
 			pass = new Grid(passenger.size() + 1, 9);
-			pass.setHTML(0, 0, "firstname");
-			pass.setHTML(0, 1, "lastname");
-			pass.setHTML(0, 2, "sexy");
-			pass.setHTML(0, 3, "type");
+			pass.setHTML(0, 0, "姓");
+			pass.setHTML(0, 1, "名");
+			pass.setHTML(0, 2, "性");
+			pass.setHTML(0, 3, "类型");
 			// pass.setHTML(0, 4, "证件");
 			pass.setHTML(0, 5, "证件ID");
 			// pass.setHTML(0, 6, "证件归宿");

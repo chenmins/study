@@ -1,5 +1,6 @@
 package org.chenmin.auto.shared;
 
+import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierException;
 
@@ -39,6 +40,9 @@ public class TigerAirPassagerVerifier implements Verifier{
 
 	@Override
 	public boolean isValid(String orderID) throws VerifierException {
+		if(Factory.order.getFlight().isEmpty()){
+			throw new VerifierException("订单不存在，无法校验");
+		}
 		return false;
 	}
 
