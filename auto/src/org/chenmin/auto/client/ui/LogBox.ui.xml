@@ -6,7 +6,7 @@
 		<g:Button ui:field="hideButton" text="关闭日志" />
 		<g:Button ui:field="showButton" text="显示日志" />
 	</g:HorizontalPanel>
-	<g:ScrollPanel ui:field="scroll" height="70px">
+	<g:ScrollPanel ui:field="scroll" height="170px" width="400px">
 		<g:HTML ui:field="log"></g:HTML>
 	</g:ScrollPanel>
 	</g:VerticalPanel>

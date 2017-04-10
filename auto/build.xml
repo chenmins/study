@@ -26,6 +26,14 @@
   </target>
 
   <target name="javac" depends="libs" description="Compile java source to bytecode">
+  	<tstamp/>
+  	<replaceregexp file="src/org/chenmin/auto/shared/MyConstants.properties" 
+  	 match="version=(.*)"
+  	 replace="version=${DSTAMP}-${TSTAMP}"
+  	  byline="true"
+  		encoding="UTF-8"
+  	 />
+ 
     <mkdir dir="war/WEB-INF/classes"/>
     <javac srcdir="src" includes="**" encoding="utf-8"
         destdir="war/WEB-INF/classes"

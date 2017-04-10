@@ -2,7 +2,7 @@ package org.chenmin.auto.client.api;
 
 public interface Verifier extends java.io.Serializable{
 	
-	enum TypeName{
+	public enum TypeName{
 		FormData,HTML,Vals,Texts
 	}
 	

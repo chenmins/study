@@ -1,5 +1,7 @@
 package org.chenmin.auto.shared;
 
+import java.util.List;
+
 import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierException;
@@ -43,6 +45,15 @@ public class TigerAirPassagerVerifier implements Verifier{
 		if(Factory.order.getFlight().isEmpty()){
 			throw new VerifierException("订单不存在，无法校验");
 		}
+		if(this.data==null||this.data.isEmpty()){
+			throw new VerifierException("表单数据不存在，无法校验");
+		}
+		Factory.log.info("订单乘客开始核对，以下为表单乘客数据");
+		Factory.log.info(getData());
+		List<PassengerWG> p = Factory.order.getPassenger();
+		Factory.log.info("订单乘客开始核对，以下为订单乘客数据");
+		Factory.log.info(p.toString());
+		
 		return false;
 	}
 

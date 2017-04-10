@@ -65,6 +65,7 @@ public class LogBox extends Composite implements HasText {
 	
 	@UiHandler("hideButton")
 	void onHide(ClickEvent e) {
+		Factory.log.clear();
 		this.scroll.setVisible(false);
 	}
 	

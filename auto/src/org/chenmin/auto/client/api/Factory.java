@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.chenmin.auto.client.ui.LogBox;
+import org.chenmin.auto.shared.MyConstants;
 import org.chenmin.auto.shared.OrderWG;
 import org.chenmin.auto.shared.TigerAirPassagerVerifier;
 
@@ -35,6 +36,15 @@ public class Factory {
 		if(alist.isEmpty())
 			throw new VerifierException("当前页面没有验证规则");
 		for(Verifier v:alist){
+			Factory.log.info("type:"+v.type());
+			Factory.log.info("sels:"+v.sels());
+			switch (v.type()) {
+			case FormData:
+				v.setData(JS.formData(v.sels())); 
+				break;
+			default:
+				break;
+			}
 			if(!v.isValid(orderID)){
 				return false;
 			}
@@ -80,4 +90,6 @@ public class Factory {
 
 	public static String baseURL = GWT.getModuleBaseForStaticFiles().contains("127")?"":(GWT.getModuleBaseForStaticFiles()+"../");
 	public static String loading = "<img src='"+baseURL+"loading.gif'/>";
+	
+	public static MyConstants my = GWT.create(MyConstants.class);
 }

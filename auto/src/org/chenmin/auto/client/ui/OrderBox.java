@@ -99,16 +99,15 @@ public class OrderBox extends Composite {
 					}else{
 						info("订单"+orderID.getText() + "，验证失败");
 						Factory.log.error("订单"+orderID.getText() + "，验证失败");
-						//Factory.log.clear();
 					}
 				} catch (VerifierException e1) {
-					info("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
+					error("订单"+orderID.getText() + "，验证失败："+e1.getLocalizedMessage());
 				}
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
-				info(caught.getMessage());
+				error(caught.getMessage());
 			}
 		};
 		Factory.getOrder(orderID.getText(), callback);
@@ -136,6 +135,10 @@ public class OrderBox extends Composite {
 	
 	public void info(String infoHTML){
 		info.setHTML(infoHTML);
+	}
+	
+	public void error(String infoHTML){
+		info.setHTML("<font color='red'>"+infoHTML+"</font>");
 	}
 
 	public void put(String textToServer) {
