@@ -33,7 +33,7 @@ public class TigerAirTimeVerifier implements Verifier {
 
 	@Override
 	public String sels() {
-		return ".price__time";
+		return ".price__time > div.media-body";
 	}
 	
 	String data;
@@ -57,15 +57,17 @@ public class TigerAirTimeVerifier implements Verifier {
 		if(this.data==null||this.data.isEmpty()){
 			throw new VerifierException("表单数据不存在，无法校验");
 		}
-		Factory.log.info("航班时间信息开始核对");
+		Factory.log.info("航班时间信息开始核对12");
 		Factory.log.info(getData());
 //    <div class="media-body">
 //        <div class="price__time--time">6:05AM</div><span>Thu, Apr 20</span>
 //    </div>
-		String media_body = JS.matcherOne(getData(), "<div class=\"media-body\">([A-Za-z0-9]+)</div>", 1);
-		String time = JS.matcherOne(media_body, "<div class=\"price__time--time\">([A-Za-z0-9]+)</div>", 1);
-		String date = JS.matcherOne(media_body, "<span>([A-Za-z0-9]+)</span>", 1);
+//		String media_body = JS.matcherOne(getData(), "<div class=\"media-body\">([A-Za-z0-9]+)</div>", 1);
+//		Factory.log.info("media_body："+media_body);
+		String time = JS.matcherOne(getData(), "<div class=\"price__time--time\">(.+)</div>", 1);
+		String date = JS.matcherOne(getData(), "<span>(.+)</span>", 1);
 		String time_date = time+" "+date;
+		Factory.log.info("time_date："+time_date);
 //		6:05AM Thu, Apr 20
 //		h:mm a EEE, MMM d
 		List<FlightWG> ft = Factory.order.getFlight();

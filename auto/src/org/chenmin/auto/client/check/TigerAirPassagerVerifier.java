@@ -128,6 +128,8 @@ public class TigerAirPassagerVerifier implements Verifier{
 			}
 		}
 		boolean b = validCount==p.size();
+		if(validCount==0)
+			throw new VerifierException("只有"+validCount+"人校验成功，请认真填写");
 		if(!b)
 			throw new VerifierException("只有"+validCount+"人校验成功");
 		return b;

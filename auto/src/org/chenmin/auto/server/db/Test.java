@@ -14,7 +14,7 @@ import org.chenmin.auto.shared.PassengerWG;
 
 public class Test {
 	
-	static String url="jdbc:mysql://pektsy.f3322.net/tsy_test";
+	static String url="jdbc:mysql://pektsy.f3322.net/tsy_manger";
 	static String user="clm";
 	static String password="clm#1";
 	//

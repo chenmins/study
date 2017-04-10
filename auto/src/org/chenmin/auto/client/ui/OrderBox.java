@@ -95,9 +95,10 @@ public class OrderBox extends Composite {
 				try {
 					boolean b = Factory.isValid(orderID.getText());
 					if(b){
-						info("订单"+orderID.getText() + "，验证通过");
+						success("订单"+orderID.getText() + "，验证通过");
+						Factory.log.hide();
 					}else{
-						info("订单"+orderID.getText() + "，验证失败");
+						error("订单"+orderID.getText() + "，验证失败");
 						Factory.log.error("订单"+orderID.getText() + "，验证失败");
 					}
 				} catch (VerifierException e1) {
@@ -138,7 +139,11 @@ public class OrderBox extends Composite {
 	}
 	
 	public void error(String infoHTML){
-		info.setHTML("<font color='red'>"+infoHTML+"</font>");
+		info.setHTML("<font color='red' size='6'>"+infoHTML+"</font>");
+	}
+	
+	public void success(String infoHTML){
+		info.setHTML("<font color='#006600' size='6'>"+infoHTML+"</font>");
 	}
 
 	public void put(String textToServer) {

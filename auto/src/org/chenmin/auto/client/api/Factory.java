@@ -94,7 +94,7 @@ public class Factory {
 	public static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
 	public static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
 	public static DateTimeFormat sdf_hm = DateTimeFormat.getFormat("[HH:mm:ss] ");
-	public static DateTimeFormat sdf_hmmd = DateTimeFormat.getFormat("h:mm a EEE, MMM d");
+	public static DateTimeFormat sdf_hmmd = DateTimeFormat.getFormat("h:mma EEE, MMM dd");
 
 	public static String baseURL = GWT.getModuleBaseForStaticFiles().contains("127")?"":(GWT.getModuleBaseForStaticFiles()+"../");
 	public static String loading = "<img src='"+baseURL+"loading.gif'/>";

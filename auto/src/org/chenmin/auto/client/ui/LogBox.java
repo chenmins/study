@@ -25,7 +25,7 @@ public class LogBox extends Composite implements HasText {
 
 	public LogBox() {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.scroll.setVisible(false);
+		hide();
 	}
 	
 	public void info(String msg){
@@ -66,18 +66,24 @@ public class LogBox extends Composite implements HasText {
 	@UiHandler("hideButton")
 	void onHide(ClickEvent e) {
 		Factory.log.clear();
+		hide();
+	}
+
+	public void hide() {
 		this.scroll.setVisible(false);
 	}
 	
 	@UiHandler("showButton")
 	void onShow(ClickEvent e) {
+		show();
+	}
+
+	public void show() {
 		this.scroll.setVisible(true);
 	}
 	
 	public void setText(String text) {
-//		if(text!=null&&text.length()==0){
-			this.scroll.setVisible(true);
-//		}
+		show();
 		log.setHTML(text);
 		scroll.scrollToBottom();
 	}
