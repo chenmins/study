@@ -3,10 +3,12 @@ package org.chenmin.auto.client.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.chenmin.auto.client.check.TigerAirFlightVerifier;
+import org.chenmin.auto.client.check.TigerAirPassagerVerifier;
+import org.chenmin.auto.client.check.TigerAirTimeVerifier;
 import org.chenmin.auto.client.ui.LogBox;
 import org.chenmin.auto.shared.MyConstants;
 import org.chenmin.auto.shared.OrderWG;
-import org.chenmin.auto.shared.TigerAirPassagerVerifier;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -18,6 +20,8 @@ public class Factory {
 	public static List<Verifier> vlist = new ArrayList<>();
 	
 	static{
+		vlist.add(new TigerAirFlightVerifier());
+		vlist.add(new TigerAirTimeVerifier());
 		vlist.add(new TigerAirPassagerVerifier());
 	}
 	
@@ -41,6 +45,9 @@ public class Factory {
 			switch (v.type()) {
 			case FormData:
 				v.setData(JS.formData(v.sels())); 
+				break;
+			case HTML:
+				v.setData(JS.getHtml(v.sels())); 
 				break;
 			default:
 				break;

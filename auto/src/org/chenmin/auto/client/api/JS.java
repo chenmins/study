@@ -1,6 +1,11 @@
 package org.chenmin.auto.client.api;
 
+import static com.google.gwt.query.client.GQuery.$;
 public class JS {
+	
+	public static String getHtml(String sels){
+		return $(sels).html();
+	}
 	
 	public static native void export() /*-{
 		$wnd.showAuto = $entry(function() {

@@ -1,10 +1,11 @@
-package org.chenmin.auto.shared;
+package org.chenmin.auto.client.check;
 
 import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierException;
+import org.chenmin.auto.shared.PassengerWG;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.JSONObject;
