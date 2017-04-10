@@ -1,8 +1,12 @@
 package org.chenmin.auto.client.check;
 
+import java.util.List;
+
 import org.chenmin.auto.client.api.Factory;
+import org.chenmin.auto.client.api.JS;
 import org.chenmin.auto.client.api.Verifier;
 import org.chenmin.auto.client.api.VerifierException;
+import org.chenmin.auto.shared.FlightWG;
 
 public class TigerAirFlightVerifier implements Verifier {
 
@@ -54,7 +58,24 @@ public class TigerAirFlightVerifier implements Verifier {
 		}
 		Factory.log.info("航班路线信息开始核对");
 		Factory.log.info(getData());
+//		 <div class="media-body">SIN</div>
+//         <div class="media-right">HKG</div><span class="icon ico-plane"></span>
+		String f = JS.matcherOne(getData(), "<div class=\"media-body\">([A-Za-z0-9]+)</div>", 1);
+		String t = JS.matcherOne(getData(), "<div class=\"media-right\">([A-Za-z0-9]+)</div>", 1);
+		List<FlightWG> ft = Factory.order.getFlight();
+		for(FlightWG fw:ft){
+			String ff = fw.getDepAirportCode();
+			String tt = fw.getArrAirportCode();
+			Factory.log.info("f:"+f+",ff:"+ff);
+			Factory.log.info("t:"+t+",tt:"+tt);
+			if(ff.equals(f)&&tt.equals(t)){
+				Factory.log.info("航班路线信息ok");
+				return true;
+			}
+		}
 		return false;
 	}
+	
+	
 
 }

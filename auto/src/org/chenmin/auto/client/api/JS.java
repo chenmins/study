@@ -1,10 +1,21 @@
 package org.chenmin.auto.client.api;
 
 import static com.google.gwt.query.client.GQuery.$;
+
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 public class JS {
 	
 	public static String getHtml(String sels){
 		return $(sels).html();
+	}
+	
+	public static String matcherOne(String r4, String pattern, int group) {
+		RegExp r = RegExp.compile(pattern);
+		MatchResult m = r.exec(r4);
+		if(m.getGroupCount()>0)
+			return m.getGroup(group);
+		return null;
 	}
 	
 	public static native void export() /*-{
