@@ -47,6 +47,9 @@ public class TigerAirPassagerVerifier implements Verifier{
 		Factory.log.info("订单乘客开始核对，以下为表单乘客数据");
 		Factory.log.info(data);
 		List<PassengerWG> p = Factory.order.getPassenger();
+		for(int i=0;i<p.size();i++){
+			JS.setHtml("#pass"+i,Factory.no);
+		}
 		Factory.log.info("订单乘客开始核对，以下为订单乘客数据");
 		Factory.log.info(p.toString());
 		JSONValue json = JSONParser.parseStrict(data);
@@ -91,6 +94,8 @@ public class TigerAirPassagerVerifier implements Verifier{
 					Factory.log.info("核对生日");
 					String dob = DateTimeFormat.getFormat("dd").format(pw.getBirthday()) ;
 					String mob = DateTimeFormat.getFormat("MM").format(pw.getBirthday()) ;
+					if(dob.startsWith("0"))
+						dob = dob.substring(1);
 					if(mob.startsWith("0"))
 						mob = mob.substring(1);
 					String yob = DateTimeFormat.getFormat("yyyy").format(pw.getBirthday()) ;
@@ -103,15 +108,15 @@ public class TigerAirPassagerVerifier implements Verifier{
 						String sex = pw.getSexy();
 						Factory.log.info("Title:"+Title+",sex:"+sex);
 						if(sex.equals("男")){
-							if(Title.equals("MR")){
-								JS.setHtml("#pass"+validCount,Factory.yes);
+							if(Title.equals("MR")||Title.equals("MSTR")){
+								JS.setHtml("#pass"+i,Factory.yes);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
 							}
 						}else{
-							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")){
-								JS.setHtml("#pass"+validCount,Factory.yes);
+							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")||Title.equals("MISS")){
+								JS.setHtml("#pass"+i,Factory.yes);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
@@ -131,7 +136,7 @@ public class TigerAirPassagerVerifier implements Verifier{
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair");
+		return url.contains("tigerair")||url.contains("flyscoot")  ;
 //		return true;
 	}
 

@@ -38,6 +38,7 @@ public class Test {
 		try {
 			p = run.query(conn,
 			    "SELECT * FROM passenger WHERE orderID=?", h, orderID);
+			System.out.println(p);
 			DBUtils.closeResources(conn,null,null);
 			return p;
 		} catch (SQLException e) {

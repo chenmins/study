@@ -19,7 +19,7 @@ public class TigerAirFlightVerifier implements Verifier {
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair")||url.contains("127");
+		return url.contains("tigerair")||url.contains("flyscoot")||url.contains("127");
 	}
 	
 	private VerifierBean[] verifierBean;
@@ -62,6 +62,9 @@ public class TigerAirFlightVerifier implements Verifier {
 		String date2=vb[7].getData().toString();
 		
 		List<FlightWG> ft = Factory.order.getFlight();
+		for(int i=0;i<ft.size();i++){
+			JS.setHtml("#fight"+i,Factory.no);
+		}
 		int index=0;
 		for(FlightWG fw:ft){
 			String time_date = time1+" "+date1;
