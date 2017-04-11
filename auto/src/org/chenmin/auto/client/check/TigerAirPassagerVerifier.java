@@ -104,14 +104,14 @@ public class TigerAirPassagerVerifier implements Verifier{
 						Factory.log.info("Title:"+Title+",sex:"+sex);
 						if(sex.equals("男")){
 							if(Title.equals("MR")){
-								JS.setHtml("#pass"+validCount,"<font color='red'>OK</font>");
+								JS.setHtml("#pass"+validCount,Factory.yes);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
 							}
 						}else{
 							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")){
-								JS.setHtml("#pass"+validCount,"<font color='red'>OK</font>");
+								JS.setHtml("#pass"+validCount,Factory.yes);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
@@ -131,7 +131,7 @@ public class TigerAirPassagerVerifier implements Verifier{
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair.com");
+		return url.contains("tigerair");
 //		return true;
 	}
 

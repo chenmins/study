@@ -103,6 +103,9 @@ public class Factory {
 	public static String baseURL = GWT.getModuleBaseForStaticFiles().contains("127") ? ""
 			: (GWT.getModuleBaseForStaticFiles() + "../");
 	public static String loading = "<img src='" + baseURL + "loading.gif'/>";
+	public static String yes = "<img src='" + baseURL + "yes.gif'/>";
+	public static String no = "<img src='" + baseURL + "no.gif'/>";
+
 
 	public static MyConstants my = GWT.create(MyConstants.class);
 }

@@ -19,7 +19,7 @@ public class TigerAirFlightVerifier implements Verifier {
 
 	@Override
 	public boolean isMe(String url) {
-		return url.contains("tigerair.com")||url.contains("127");
+		return url.contains("tigerair")||url.contains("127");
 	}
 	
 	private VerifierBean[] verifierBean;
@@ -74,7 +74,7 @@ public class TigerAirFlightVerifier implements Verifier {
 			Factory.log.info("time_date:"+time_date+",dt:"+dt);
 			if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
 				Factory.log.info("航班路线信息ok");
-				JS.setHtml("#fight"+index,"<font color='red'>OK</font>");
+				JS.setHtml("#fight"+index,Factory.yes);
 				index++;
 			}
 		}
@@ -89,7 +89,7 @@ public class TigerAirFlightVerifier implements Verifier {
 			Factory.log.info("time_date:"+time_date+",dt:"+dt);
 			if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
 				Factory.log.info("航班路线信息ok");
-				JS.setHtml("#fight"+index,"<font color='red'>OK</font>");
+				JS.setHtml("#fight"+index,Factory.yes);
 				index++;
 			}
 		}
