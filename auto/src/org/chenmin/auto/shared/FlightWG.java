@@ -1,7 +1,5 @@
 package org.chenmin.auto.shared;
 
-import java.util.Date;
-
 public class FlightWG implements java.io.Serializable{
 
 	/**
@@ -12,7 +10,7 @@ public class FlightWG implements java.io.Serializable{
 	private String orderID;
 	private String depAirportCode;
 	private String arrAirportCode;
-	private Date depTime;
+	private String depTime;
 	private String flightNum;
 	private String carrier;
 	public String getOrderID() {
@@ -33,10 +31,10 @@ public class FlightWG implements java.io.Serializable{
 	public void setArrAirportCode(String arrAirportCode) {
 		this.arrAirportCode = arrAirportCode;
 	}
-	public Date getDepTime() {
+	public String getDepTime() {
 		return depTime;
 	}
-	public void setDepTime(Date depTime) {
+	public void setDepTime(String depTime) {
 		this.depTime = depTime;
 	}
 	public String getFlightNum() {

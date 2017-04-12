@@ -19,7 +19,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -49,8 +48,8 @@ public class Order extends Composite {
 	private Grid fight = new Grid();
 	private Grid pass = new Grid();
 	
-	private static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
-	private static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
+//	private static DateTimeFormat sdf_ymd = DateTimeFormat.getFormat("yyyy-MM-dd");
+//	private static DateTimeFormat sdf_ymdhm = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm");
 
 	final DecoratedPopupPanel simplePopup = new DecoratedPopupPanel(true);
 
@@ -193,7 +192,7 @@ public class Order extends Composite {
 				fight.setHTML(index, 0, f.getCarrier());
 				fight.setHTML(index, 1, f.getDepAirportCode());
 				fight.setHTML(index, 2, f.getArrAirportCode());
-				fight.setHTML(index, 3,sdf_ymdhm.format(f.getDepTime()));
+				fight.setHTML(index, 3, f.getDepTime() );
 				fight.setHTML(index, 4, f.getFlightNum());
 				index++;
 			}
@@ -221,8 +220,8 @@ public class Order extends Composite {
 //				pass.setHTML(index, 4, f.getCredentialsname());
 				pass.setHTML(index, 5, f.getCredentialsID());
 //				pass.setHTML(index, 6, f.getNationality());
-				pass.setHTML(index, 7,sdf_ymd.format(f.getBirthday()));
-				pass.setHTML(index, 8,sdf_ymd.format(f.getExpirydate()));
+				pass.setHTML(index, 7, f.getBirthday()) ;
+				pass.setHTML(index, 8, f.getExpirydate() );
 				index++;
 			}
 			fightPanel.add(pass);

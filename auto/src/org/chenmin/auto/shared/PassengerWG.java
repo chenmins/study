@@ -1,7 +1,5 @@
 package org.chenmin.auto.shared;
 
-import java.util.Date;
-
 public class PassengerWG implements java.io.Serializable{
 
 	/**
@@ -17,8 +15,8 @@ public class PassengerWG implements java.io.Serializable{
 	private String credentialsname;
 	private String credentialsID;
 	private String nationality;
-	private Date birthday;
-	private Date expirydate;
+	private String birthday;
+	private String expirydate;
 	private String credentialsnationality;
 	public String getOrderID() {
 		return orderID;
@@ -68,16 +66,16 @@ public class PassengerWG implements java.io.Serializable{
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public Date getExpirydate() {
+	public String getExpirydate() {
 		return expirydate;
 	}
-	public void setExpirydate(Date expirydate) {
+	public void setExpirydate(String expirydate) {
 		this.expirydate = expirydate;
 	}
 	public String getCredentialsnationality() {

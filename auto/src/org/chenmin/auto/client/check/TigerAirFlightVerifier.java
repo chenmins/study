@@ -1,6 +1,5 @@
 package org.chenmin.auto.client.check;
 
-import java.util.Date;
 import java.util.List;
 
 import org.chenmin.auto.client.api.Factory;
@@ -68,8 +67,7 @@ public class TigerAirFlightVerifier implements Verifier {
 		int index=0;
 		for(FlightWG fw:ft){
 			String time_date = time1+" "+date1;
-			Date dtime = fw.getDepTime();
-			String dt = Factory.sdf_hmmd.format(dtime);
+			String dt =  fw.getDepTime();
 			String ff = fw.getDepAirportCode();
 			String tt = fw.getArrAirportCode();
 			Factory.log.info("f1:"+f1+",ff:"+ff);
@@ -83,8 +81,9 @@ public class TigerAirFlightVerifier implements Verifier {
 		}
 		for(FlightWG fw:ft){
 			String time_date = time2+" "+date2;
-			Date dtime = fw.getDepTime();
-			String dt = Factory.sdf_hmmd.format(dtime);
+//			Date dtime = fw.getDepTime();
+//			String dt = Factory.sdf_hmmd.format(dtime);
+			String dt =  fw.getDepTime();
 			String ff = fw.getDepAirportCode();
 			String tt = fw.getArrAirportCode();
 			Factory.log.info("f2:"+f2+",ff:"+ff);

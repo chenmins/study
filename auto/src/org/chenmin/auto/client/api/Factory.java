@@ -82,6 +82,8 @@ public class Factory {
 			@Override
 			public void onSuccess(OrderWG result) {
 				order = result;
+				GWT.log("onSuccess:");
+				GWT.log(result.toString());
 				callback.onSuccess(result);
 			}
 

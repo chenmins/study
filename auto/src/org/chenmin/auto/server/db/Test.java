@@ -20,11 +20,23 @@ public class Test {
 	//
 	
 	public static void main(String[] args)    {
+//		yyyy-MM-dd
+//		String y = "yyyy-MM-dd";
+//		String dob = y.substring(8, 10);
+//		String mob = y.substring(5, 7);
+//		String yob =y.substring(0, 4);
+//		System.out.println(dob);
+//		System.out.println(mob);
+//		System.out.println(yob);
+		
 		String sysdate = getSysdate( );
 		System.out.println(sysdate);
-		String orderID = "2985811968";
+		String orderID = "306245307572";
 		List<FlightWG> p = getFlightWGs(orderID);
 		System.out.println(p);
+		
+		List<PassengerWG> pa = getPassengerWGs(orderID);
+		System.out.println(pa);
 	}
 
 	
@@ -37,8 +49,7 @@ public class Test {
 		List<PassengerWG> p;
 		try {
 			p = run.query(conn,
-			    "SELECT * FROM passenger WHERE orderID=?", h, orderID);
-			System.out.println(p);
+			    "SELECT orderID , firstname , lastname , sexy , type , credentialsname , credentialsID , nationality , date_format(birthday,'%Y-%m-%d') birthday, date_format(expirydate,'%Y-%m-%d') expirydate , credentialsnationality  FROM passenger WHERE orderID=?", h, orderID);
 			DBUtils.closeResources(conn,null,null);
 			return p;
 		} catch (SQLException e) {
@@ -56,7 +67,7 @@ public class Test {
 		List<FlightWG> p;
 		try {
 			p = run.query(conn,
-			    "SELECT * FROM flight WHERE orderID=?", h, orderID);
+			    "SELECT orderID,depAirportCode,arrAirportCode,date_format(depTime,'%l:%i%p %a, %b %d') depTime  ,flightNum,carrier FROM flight WHERE orderID=?", h, orderID);
 			DBUtils.closeResources(conn,null,null);
 			return p;
 		} catch (SQLException e) {

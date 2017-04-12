@@ -9,7 +9,6 @@ import org.chenmin.auto.client.api.VerifierBean;
 import org.chenmin.auto.client.api.VerifierException;
 import org.chenmin.auto.shared.PassengerWG;
 
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
@@ -50,21 +49,21 @@ public class TigerAirPassagerVerifier implements Verifier{
 		for(int i=0;i<p.size();i++){
 			JS.setHtml("#pass"+i,Factory.no);
 		}
-		Factory.log.info("订单乘客开始核对，以下为订单乘客数据");
-		Factory.log.info(p.toString());
+//		Factory.log.info("订单乘客开始核对，以下为订单乘客数据");
+//		Factory.log.info(p.toString());
 		JSONValue json = JSONParser.parseStrict(data);
 		JSONObject o = json.isObject();
 //		"insuranceQuoteInput.ParticipantCount": "1",
-		if(o.containsKey("insuranceQuoteInput.ParticipantCount")){
-			Factory.log.info("订单乘客人数核对，以下为表单乘客人数");
-			String participantCount = o.get("insuranceQuoteInput.ParticipantCount").isString().	stringValue() ;
-			Factory.log.info(participantCount);
-			Factory.log.info("订单乘客人数核对，以下为订单乘客人数");
-			Factory.log.info(""+p.size());
-			if(!participantCount.equals(""+p.size())){
-				throw new VerifierException("订单人数和填写人数不匹配，无法校验");
-			}
-		}
+//		if(o.containsKey("insuranceQuoteInput.ParticipantCount")){
+//			Factory.log.info("订单乘客人数核对，以下为表单乘客人数");
+//			String participantCount = o.get("insuranceQuoteInput.ParticipantCount").isString().	stringValue() ;
+//			Factory.log.info(participantCount);
+//			Factory.log.info("订单乘客人数核对，以下为订单乘客人数");
+//			Factory.log.info(""+p.size());
+//			if(!participantCount.equals(""+p.size())){
+//				throw new VerifierException("订单人数和填写人数不匹配，无法校验");
+//			}
+//		}
 		int validCount = 0;
 		for(int j=0;j<p.size();j++){
 			//一层层 匹配
@@ -92,13 +91,14 @@ public class TigerAirPassagerVerifier implements Verifier{
 				if(First.equals(FirstName)&&Last.equals(LastName)){
 					//2.核对生日
 					Factory.log.info("核对生日");
-					String dob = DateTimeFormat.getFormat("dd").format(pw.getBirthday()) ;
-					String mob = DateTimeFormat.getFormat("MM").format(pw.getBirthday()) ;
+					//yyyy-MM-dd
+					String dob = pw.getBirthday().substring(8, 10);// DateTimeFormat.getFormat("dd").format(pw.getBirthday()) ;
+					String mob = pw.getBirthday().substring(5, 7);// DateTimeFormat.getFormat("MM").format(pw.getBirthday()) ;
 					if(dob.startsWith("0"))
 						dob = dob.substring(1);
 					if(mob.startsWith("0"))
 						mob = mob.substring(1);
-					String yob = DateTimeFormat.getFormat("yyyy").format(pw.getBirthday()) ;
+					String yob = pw.getBirthday().substring(0, 4);//DateTimeFormat.getFormat("yyyy").format(pw.getBirthday()) ;
 					Factory.log.info("DayOfBirth:"+DayOfBirth+",dob:"+dob);
 					Factory.log.info("MonthOfBirth:"+MonthOfBirth+",mob:"+mob);
 					Factory.log.info("YearOfBirth:"+YearOfBirth+",yob:"+yob);

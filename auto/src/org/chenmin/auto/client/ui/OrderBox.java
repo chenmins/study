@@ -181,7 +181,7 @@ public class OrderBox extends Composite {
 				fight.setHTML(index, 1, f.getCarrier());
 				fight.setHTML(index, 2, f.getDepAirportCode());
 				fight.setHTML(index, 3, f.getArrAirportCode());
-				fight.setHTML(index, 4, Factory.sdf_ymdhm.format(f.getDepTime()));
+				fight.setHTML(index, 4,  f.getDepTime()) ;
 				fight.setHTML(index, 5, f.getFlightNum());
 				index++;
 			}
@@ -211,8 +211,8 @@ public class OrderBox extends Composite {
 				// pass.setHTML(index, 5, f.getCredentialsname());
 				pass.setHTML(index, 6, f.getCredentialsID());
 				// pass.setHTML(index, 7, f.getNationality());
-				pass.setHTML(index, 8, Factory.sdf_ymd.format(f.getBirthday()));
-				pass.setHTML(index, 9, Factory.sdf_ymd.format(f.getExpirydate()));
+				pass.setHTML(index, 8, f.getBirthday() );
+				pass.setHTML(index, 9, f.getExpirydate() );
 				index++;
 			}
 			fightPanel.add(pass);
