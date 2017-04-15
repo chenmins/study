@@ -35,8 +35,8 @@ public class TigerAirFlightVerifier implements Verifier {
 		this.verifierBean =  new VerifierBean[]{
 				//往：f1起飞地点,t1到达地点,time1起飞时间,date1起飞日期；
 				//返：f2起飞地点,t2到达地点,time2到达时间,date2到达日期；
-				//中转：zf1起飞地点,zt1到达地点,ztime1起飞时间,zdate1起飞日期；
-				//中转：f2起飞地点,zt2到达地点,ztime2到达时间,zdate2到达日期；
+				//中转1段：zf1起飞地点,zt1到达地点,ztime1起飞时间,zdate1起飞日期；
+				//中转2段：Zf2起飞地点,zt2到达地点,ztime2到达时间,zdate2到达日期；
 				new VerifierBean("f1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
 				new VerifierBean("t1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-right",Verifier.TypeName.HTML),
 				new VerifierBean("f2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
@@ -45,14 +45,14 @@ public class TigerAirFlightVerifier implements Verifier {
 				new VerifierBean("date1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),
 				new VerifierBean("time2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > div",Verifier.TypeName.HTML),
 				new VerifierBean("date2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),
-				new VerifierBean("zf1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
-				new VerifierBean("zt1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__flight > div.media-right",Verifier.TypeName.HTML),
-				new VerifierBean("zf2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__flight > div.media-body",Verifier.TypeName.HTML),
-				new VerifierBean("zt2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__flight > div.media-right",Verifier.TypeName.HTML),
-				new VerifierBean("ztime1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__time > div.media-body > div",Verifier.TypeName.HTML),
-				new VerifierBean("zdate1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),
-				new VerifierBean("ztime2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > div",Verifier.TypeName.HTML),
-				new VerifierBean("zdate2","#booking_summary_display > div > div > div > div:nth-child(2) > div > div.price__inner > div.media.price__time > div.media-body > span",Verifier.TypeName.HTML),		
+				new VerifierBean("zf1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(3) > div.media-body",Verifier.TypeName.HTML),
+				new VerifierBean("zt1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(3) > div.media-right",Verifier.TypeName.HTML),
+				new VerifierBean("zf2","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(7) > div.media-body",Verifier.TypeName.HTML),
+				new VerifierBean("zt2","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(7) > div.media-right",Verifier.TypeName.HTML),
+				new VerifierBean("ztime1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(4) > div.media-body > div",Verifier.TypeName.HTML),
+				new VerifierBean("zdate1","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(4) > div.media-body > span",Verifier.TypeName.HTML),
+				new VerifierBean("ztime2","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(8) > div.media-body > div",Verifier.TypeName.HTML),
+				new VerifierBean("zdate2","#booking_summary_display > div > div > div > div:nth-child(1) > div > div.price__inner > div:nth-child(8) > div.media-body > span",Verifier.TypeName.HTML),		
 		};
 	}
 
