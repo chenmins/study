@@ -19,6 +19,7 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -221,17 +222,32 @@ public class OrderBox extends Composite {
 
 
 	private void validReal() {
+		AsyncCallback<Void> callback = new AsyncCallback<Void>() {
+			
+			@Override
+			public void onSuccess(Void result) {
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("uploadOrderValid:"+caught.getMessage());
+			}
+		};
 		try {
 			boolean b = Factory.isValid(orderID.getText());
 			if(b){
 				success("订单"+orderID.getText() + "，验证通过");
 				Factory.log.hide();
+				Factory.uploadOrderValid(orderID.getText(), true, Factory.log.getText() + info.getHTML(), callback );
 			}else{
 				error("订单"+orderID.getText() + "，验证失败");
 				Factory.log.error("订单"+orderID.getText() + "，验证失败");
+				Factory.uploadOrderValid(orderID.getText(), false, Factory.log.getText()+ info.getHTML(), callback );
 			}
 		} catch (VerifierException e1) {
 			error("订单"+orderID.getText() + "，验证失败：<br />"+e1.getLocalizedMessage());
+			Factory.uploadOrderValid(orderID.getText(), false, Factory.log.getText()+ info.getHTML(), callback );
 		}
 	}
 }

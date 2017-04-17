@@ -75,6 +75,10 @@ public class Factory {
 	public final static AirLineAsync airLineService = GWT.create(AirLine.class);
 
 	public static OrderWG order;
+	
+	public static void uploadOrderValid(String orderID, boolean success, String log, AsyncCallback<Void> callback){
+		airLineService.uploadOrderValid(orderID, success, log, callback);
+	}
 
 	public static void getOrder(String orderID, final AsyncCallback<OrderWG> callback) {
 		AsyncCallback<OrderWG> callbackPorxy = new AsyncCallback<OrderWG>() {

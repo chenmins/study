@@ -8,4 +8,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface AirLine extends RemoteService {
 	
 	OrderWG getOrder(String orderID) throws Exception;
+	
+	void uploadOrderValid(String orderID,boolean success,String log) throws Exception;
 }

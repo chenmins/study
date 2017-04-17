@@ -30,4 +30,9 @@ public class OrderWG implements java.io.Serializable{
 		this.passenger = passenger;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderWG [flight=" + flight + ", passenger=" + passenger + "]";
+	}
+
 }

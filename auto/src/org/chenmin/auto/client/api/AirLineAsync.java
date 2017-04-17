@@ -8,4 +8,6 @@ public interface AirLineAsync {
 
 	void getOrder(String orderID, AsyncCallback<OrderWG> callback);
 
+	void uploadOrderValid(String orderID, boolean success, String log, AsyncCallback<Void> callback);
+
 }
