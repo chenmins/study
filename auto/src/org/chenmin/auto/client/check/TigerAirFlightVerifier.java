@@ -105,7 +105,7 @@ public class TigerAirFlightVerifier implements Verifier {
 				Factory.log.info("time_date:"+time_date+",dt:"+dt);
 				if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
 					Factory.log.info("航班路线信息ok");
-					JS.setHtml("#fight"+index,Factory.yes);
+					colorFlight(ft, dt);
 					index++;
 				}
 			}
@@ -128,10 +128,11 @@ public class TigerAirFlightVerifier implements Verifier {
 					Factory.log.info("time_date:"+time_date+",dt:"+dt);
 					if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
 						Factory.log.info("航班路线信息ok");
-						JS.setHtml("#fight"+index,Factory.yes);
 						index++;
+						colorFlight(ft, dt);
 					}
 				}
+				
 				//验证往返第二段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = time2+" "+date2;
@@ -145,7 +146,7 @@ public class TigerAirFlightVerifier implements Verifier {
 					Factory.log.info("time_date:"+time_date+",dt:"+dt);
 					if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
 						Factory.log.info("航班路线信息ok");
-						JS.setHtml("#fight"+index,Factory.yes);
+						colorFlight(ft, dt);
 						index++;
 					}
 				}
@@ -166,10 +167,11 @@ public class TigerAirFlightVerifier implements Verifier {
 					Factory.log.info("time_date:"+time_date+",dt:"+dt);
 					if(ff.equals(zf1)&&tt.equals(zt1)&&time_date.equals(dt)){
 						Factory.log.info("航班路线信息ok");
-						JS.setHtml("#fight"+index,Factory.yes);
+						colorFlight(ft, dt);
 						index++;
 					}
 				}
+				
 				//验证中转的第二段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = ztime2+" "+zdate2;
@@ -183,20 +185,29 @@ public class TigerAirFlightVerifier implements Verifier {
 					Factory.log.info("time_date:"+time_date+",dt:"+dt);
 					if(ff.equals(zf2)&&tt.equals(zt2)&&time_date.equals(dt)){
 						Factory.log.info("航班路线信息ok");
-						JS.setHtml("#fight"+index,Factory.yes);
+						colorFlight(ft, dt);
 						index++;
 					}
 				}
 			}
 			
 		}
-		
+		Factory.log.info("index:"+index);
 		return true;
 //		int size = Factory.order.getFlight().size();
 //		boolean b = index==size;
 //		if(index<size)
 //			throw new VerifierException("只有"+index+"个航班验证通过，请认真填写");
 //		return b;
+	}
+
+	private void colorFlight(List<FlightWG> ft, String dt) {
+		for(int i=0;i<ft.size();i++){
+			String dep = JS.getHtml("#dep"+i);
+			if(dep.equals(dt)){
+				JS.setHtml("#fight"+i,Factory.yes);
+			}
+		}
 	}
 	
 	

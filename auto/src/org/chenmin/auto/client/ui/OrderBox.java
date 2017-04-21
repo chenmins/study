@@ -71,7 +71,7 @@ public class OrderBox extends Composite {
 	private void initEvent() {
 		GWT.log("initEvent");
 //		info.setHTML(Factory.loading+":1s:"+GWT.getModuleBaseForStaticFiles());
-		button.setVisible(false);
+//		button.setVisible(false);
 		String order = Store.getItem("order");
 		if(order!=null){
 			orderID.setText(order);
@@ -182,7 +182,7 @@ public class OrderBox extends Composite {
 				fight.setHTML(index, 1, f.getCarrier());
 				fight.setHTML(index, 2, f.getDepAirportCode());
 				fight.setHTML(index, 3, f.getArrAirportCode());
-				fight.setHTML(index, 4,  f.getDepTime()) ;
+				fight.setHTML(index, 4, "<span id='dep"+(index-1)+"'>"+f.getDepTime()+"</span>" ) ;
 				fight.setHTML(index, 5, f.getFlightNum());
 				index++;
 			}
