@@ -69,11 +69,11 @@ public class TigerAirPassagerVerifier implements Verifier{
 		int validCount = 0;
 		//ParticipantCount如果有值，就取这个为最大值
 		int max = ParticipantCount>0?ParticipantCount:p.size();
-		for(int j=0;j<max;j++){
+		for(int j=0;j<p.size();j++){
 			//一层层 匹配
 			PassengerWG pw = p.get(j);
 			Factory.log.info("开始匹配："+pw.getFirstname()+" "+pw.getLastname());
-			for(int i=0;i<p.size();i++){
+			for(int i=0;i<max;i++){
 //		"revPassengersInput.PassengerInfantModels.PassengersInfo[0].Title": "MRS",
 				String Title = o.get("revPassengersInput.PassengerInfantModels.PassengersInfo["+i+"].Title").isString().stringValue();
 //		"revPassengersInput.PassengerInfantModels.PassengersInfo[0].First": "min",
