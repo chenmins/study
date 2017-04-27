@@ -112,45 +112,45 @@ public class TigerAirFlightVerifier implements Verifier {
 		}else{
 			String from2 = ft.get(1).getDepAirportCode();
 			String arr2 = ft.get(1).getArrAirportCode();
-			//处理往返
-			//wf为true是往返
-			//boolean wf=false;
-			if(from1.equals(arr2)&&arr1.equals(from2)){
-				//wf=true;
-				//验证往返第一段航线起飞、到达、时间、日期
-				for(FlightWG fw:ft){
-					String time_date = time1+" "+date1;
-					String dt =  fw.getDepTime();
-					String ff = fw.getDepAirportCode();
-					String tt = fw.getArrAirportCode();
-					Factory.log.info("f1:"+f1+",ff:"+ff);
-					Factory.log.info("t1:"+t1+",tt:"+tt);
-					Factory.log.info("time_date:"+time_date+",dt:"+dt);
-					if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
-						Factory.log.info("航班路线信息ok");
-						index++;
-						colorFlight(ft, dt);
-					}
-				}
-				
-				//验证往返第二段航线起飞、到达、时间、日期
-				for(FlightWG fw:ft){
-					String time_date = time2+" "+date2;
-//					Date dtime = fw.getDepTime();
-//					String dt = Factory.sdf_hmmd.format(dtime);
-					String dt =  fw.getDepTime();
-					String ff = fw.getDepAirportCode();
-					String tt = fw.getArrAirportCode();
-					Factory.log.info("f2:"+f2+",ff:"+ff);
-					Factory.log.info("t2:"+t2+",tt:"+tt);
-					Factory.log.info("time_date:"+time_date+",dt:"+dt);
-					if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
-						Factory.log.info("航班路线信息ok");
-						colorFlight(ft, dt);
-						index++;
-					}
-				}
-			}
+//			//处理往返
+//			//wf为true是往返
+//			//boolean wf=false;
+//			if(from1.equals(arr2)&&arr1.equals(from2)){
+//				//wf=true;
+//				//验证往返第一段航线起飞、到达、时间、日期
+//				for(FlightWG fw:ft){
+//					String time_date = time1+" "+date1;
+//					String dt =  fw.getDepTime();
+//					String ff = fw.getDepAirportCode();
+//					String tt = fw.getArrAirportCode();
+//					Factory.log.info("f1:"+f1+",ff:"+ff);
+//					Factory.log.info("t1:"+t1+",tt:"+tt);
+//					Factory.log.info("time_date:"+time_date+",dt:"+dt);
+//					if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
+//						Factory.log.info("航班路线信息ok");
+//						index++;
+//						colorFlight(ft, dt);
+//					}
+//				}
+//				
+//				//验证往返第二段航线起飞、到达、时间、日期
+//				for(FlightWG fw:ft){
+//					String time_date = time2+" "+date2;
+////					Date dtime = fw.getDepTime();
+////					String dt = Factory.sdf_hmmd.format(dtime);
+//					String dt =  fw.getDepTime();
+//					String ff = fw.getDepAirportCode();
+//					String tt = fw.getArrAirportCode();
+//					Factory.log.info("f2:"+f2+",ff:"+ff);
+//					Factory.log.info("t2:"+t2+",tt:"+tt);
+//					Factory.log.info("time_date:"+time_date+",dt:"+dt);
+//					if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
+//						Factory.log.info("航班路线信息ok");
+//						colorFlight(ft, dt);
+//						index++;
+//					}
+//				}
+//			}
 			//中转
 			//zf为true是中转
 			//boolean zf=false;
@@ -184,6 +184,41 @@ public class TigerAirFlightVerifier implements Verifier {
 					Factory.log.info("zt2:"+zt2+",tt:"+tt);
 					Factory.log.info("time_date:"+time_date+",dt:"+dt);
 					if(ff.equals(zf2)&&tt.equals(zt2)&&time_date.equals(dt)){
+						Factory.log.info("航班路线信息ok");
+						colorFlight(ft, dt);
+						index++;
+					}
+				}
+			}else{
+				//处理往返. 多段
+				//验证往返第一段航线起飞、到达、时间、日期
+				for(FlightWG fw:ft){
+					String time_date = time1+" "+date1;
+					String dt =  fw.getDepTime();
+					String ff = fw.getDepAirportCode();
+					String tt = fw.getArrAirportCode();
+					Factory.log.info("f1:"+f1+",ff:"+ff);
+					Factory.log.info("t1:"+t1+",tt:"+tt);
+					Factory.log.info("time_date:"+time_date+",dt:"+dt);
+					if(ff.equals(f1)&&tt.equals(t1)&&time_date.equals(dt)){
+						Factory.log.info("航班路线信息ok");
+						index++;
+						colorFlight(ft, dt);
+					}
+				}
+				
+				//验证往返第二段航线起飞、到达、时间、日期
+				for(FlightWG fw:ft){
+					String time_date = time2+" "+date2;
+//					Date dtime = fw.getDepTime();
+//					String dt = Factory.sdf_hmmd.format(dtime);
+					String dt =  fw.getDepTime();
+					String ff = fw.getDepAirportCode();
+					String tt = fw.getArrAirportCode();
+					Factory.log.info("f2:"+f2+",ff:"+ff);
+					Factory.log.info("t2:"+t2+",tt:"+tt);
+					Factory.log.info("time_date:"+time_date+",dt:"+dt);
+					if(ff.equals(f2)&&tt.equals(t2)&&time_date.equals(dt)){
 						Factory.log.info("航班路线信息ok");
 						colorFlight(ft, dt);
 						index++;
