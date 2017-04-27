@@ -54,18 +54,22 @@ public class TigerAirPassagerVerifier implements Verifier{
 		JSONValue json = JSONParser.parseStrict(data);
 		JSONObject o = json.isObject();
 //		"insuranceQuoteInput.ParticipantCount": "1",
-//		if(o.containsKey("insuranceQuoteInput.ParticipantCount")){
-//			Factory.log.info("订单乘客人数核对，以下为表单乘客人数");
-//			String participantCount = o.get("insuranceQuoteInput.ParticipantCount").isString().	stringValue() ;
-//			Factory.log.info(participantCount);
+		int ParticipantCount = -1;
+		if(o.containsKey("insuranceQuoteInput.ParticipantCount")){
+			Factory.log.info("订单乘客人数核对，以下为表单乘客人数");
+			String participantCount = o.get("insuranceQuoteInput.ParticipantCount").isString().	stringValue() ;
+			Factory.log.info(participantCount);
+			ParticipantCount = Integer.parseInt(participantCount);
 //			Factory.log.info("订单乘客人数核对，以下为订单乘客人数");
 //			Factory.log.info(""+p.size());
 //			if(!participantCount.equals(""+p.size())){
 //				throw new VerifierException("订单人数和填写人数不匹配，无法校验");
 //			}
-//		}
+		}
 		int validCount = 0;
-		for(int j=0;j<p.size();j++){
+		//ParticipantCount如果有值，就取这个为最大值
+		int max = ParticipantCount>0?ParticipantCount:p.size();
+		for(int j=0;j<max;j++){
 			//一层层 匹配
 			PassengerWG pw = p.get(j);
 			Factory.log.info("开始匹配："+pw.getFirstname()+" "+pw.getLastname());
