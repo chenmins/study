@@ -188,7 +188,7 @@ public class OrderBox extends Composite {
 			}
 			fightPanel.add(fight);
 		} else {
-			info(orderID.getText() + "订单不存在，请查证");
+			info(orderID.getText() + "订单号不存在请查证，如果确认无误咨询王贵哥哥");
 		}
 		if (!passenger.isEmpty()) {
 			pass = new Grid(passenger.size() + 1, 10);
@@ -205,8 +205,8 @@ public class OrderBox extends Composite {
 			int index = 1;
 			for (PassengerWG f : passenger) {
 				pass.setHTML(index, 0, "<span id='pass"+(index-1)+"'></span>");
-				pass.setHTML(index, 1, f.getFirstname());
-				pass.setHTML(index, 2, f.getLastname());
+				pass.setHTML(index, 1, "<span id='passFirst"+(index-1)+"'>"+f.getFirstname()+"</span>");
+				pass.setHTML(index, 2, "<span id='passLast"+(index-1)+"'>"+f.getLastname()+"</span>");
 				pass.setHTML(index, 3, f.getSexy());
 				pass.setHTML(index, 4, f.getType());
 				// pass.setHTML(index, 5, f.getCredentialsname());

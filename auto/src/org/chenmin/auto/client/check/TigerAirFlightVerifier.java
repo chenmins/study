@@ -228,6 +228,8 @@ public class TigerAirFlightVerifier implements Verifier {
 			
 		}
 		Factory.log.info("index:"+index);
+		if(index==0)
+			throw new VerifierException("只有"+index+"个航班验证通过，请认真填写");
 		return true;
 //		int size = Factory.order.getFlight().size();
 //		boolean b = index==size;

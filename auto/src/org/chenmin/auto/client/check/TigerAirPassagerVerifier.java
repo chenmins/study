@@ -113,14 +113,16 @@ public class TigerAirPassagerVerifier implements Verifier{
 						Factory.log.info("Title:"+Title+",sex:"+sex);
 						if(sex.equals("男")){
 							if(Title.equals("MR")||Title.equals("MSTR")){
-								JS.setHtml("#pass"+i,Factory.yes);
+//								JS.setHtml("#pass"+i,Factory.yes);
+								colorPassenger( p,   First,  Last);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
 							}
 						}else{
 							if(Title.equals("MRS")||Title.equals("MS")||Title.equals("MDM")||Title.equals("MISS")){
-								JS.setHtml("#pass"+i,Factory.yes);
+//								JS.setHtml("#pass"+i,Factory.yes);
+								colorPassenger( p,   First,  Last);
 								validCount++;
 								Factory.log.info(validCount+"个乘客核对成功");
 								break;
@@ -137,6 +139,18 @@ public class TigerAirPassagerVerifier implements Verifier{
 			throw new VerifierException("只有"+validCount+"人校验成功");
 		return b;
 	}
+	
+	private void colorPassenger(List<PassengerWG> ft, String First,String Last) {
+		for(int i=0;i<ft.size();i++){
+			//passFirst,passLast
+			String passFirst = JS.getHtml("#passFirst"+i);
+			String passLast = JS.getHtml("#passLast"+i);
+			if(First.equals(passFirst)&&Last.equals(passLast)){
+				JS.setHtml("#pass"+i,Factory.yes);
+			}
+		}
+	}
+	
 
 	@Override
 	public boolean isMe(String url) {
