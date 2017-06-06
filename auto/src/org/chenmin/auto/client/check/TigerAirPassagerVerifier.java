@@ -116,7 +116,7 @@ public class TigerAirPassagerVerifier implements Verifier{
 //								JS.setHtml("#pass"+i,Factory.yes);
 								colorPassenger( p,   First,  Last);
 								validCount++;
-								Factory.log.info(validCount+"个乘客核对成功");
+								Factory.log.info(validCount+"个男乘客核对成功");
 								break;
 							}
 						}else{
@@ -124,7 +124,7 @@ public class TigerAirPassagerVerifier implements Verifier{
 //								JS.setHtml("#pass"+i,Factory.yes);
 								colorPassenger( p,   First,  Last);
 								validCount++;
-								Factory.log.info(validCount+"个乘客核对成功");
+								Factory.log.info(validCount+"个女乘客核对成功");
 								break;
 							}
 						}
@@ -145,7 +145,9 @@ public class TigerAirPassagerVerifier implements Verifier{
 			//passFirst,passLast
 			String passFirst = JS.getHtml("#passFirst"+i);
 			String passLast = JS.getHtml("#passLast"+i);
-			if(First.equals(passFirst)&&Last.equals(passLast)){
+//			Factory.log.info(i+":"+"passFirst："+passFirst+",First"+First);
+//			Factory.log.info(i+":"+"passLast："+passLast+",Last"+Last);
+			if(First.equals(passLast)&&Last.equals( passFirst)){
 				JS.setHtml("#pass"+i,Factory.yes);
 			}
 		}
