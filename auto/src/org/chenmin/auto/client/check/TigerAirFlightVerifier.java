@@ -97,6 +97,7 @@ public class TigerAirFlightVerifier implements Verifier {
 			//处理单程航线校验
 			for(FlightWG fw:ft){
 				String time_date = time1+" "+date1;
+				time_date = TimeUtils.parseTime(time_date);
 				String dt =  fw.getDepTime();
 				String ff = fw.getDepAirportCode();
 				String tt = fw.getArrAirportCode();
@@ -159,6 +160,7 @@ public class TigerAirFlightVerifier implements Verifier {
 				//验证中转的第一段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = ztime1+" "+zdate1;
+					time_date = TimeUtils.parseTime(time_date);
 					String dt =  fw.getDepTime();
 					String ff = fw.getDepAirportCode();
 					String tt = fw.getArrAirportCode();
@@ -175,6 +177,8 @@ public class TigerAirFlightVerifier implements Verifier {
 				//验证中转的第二段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = ztime2+" "+zdate2;
+					time_date = TimeUtils.parseTime(time_date);
+
 //							Date dtime = fw.getDepTime();
 //							String dt = Factory.sdf_hmmd.format(dtime);
 					String dt =  fw.getDepTime();
@@ -194,6 +198,7 @@ public class TigerAirFlightVerifier implements Verifier {
 				//验证往返第一段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = time1+" "+date1;
+					time_date = TimeUtils.parseTime(time_date);
 					String dt =  fw.getDepTime();
 					String ff = fw.getDepAirportCode();
 					String tt = fw.getArrAirportCode();
@@ -210,6 +215,7 @@ public class TigerAirFlightVerifier implements Verifier {
 				//验证往返第二段航线起飞、到达、时间、日期
 				for(FlightWG fw:ft){
 					String time_date = time2+" "+date2;
+					time_date = TimeUtils.parseTime(time_date);
 //					Date dtime = fw.getDepTime();
 //					String dt = Factory.sdf_hmmd.format(dtime);
 					String dt =  fw.getDepTime();
